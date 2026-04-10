@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
 
 class AppShimmer extends StatefulWidget {
   final Widget child;
@@ -29,9 +30,8 @@ class _AppShimmerState extends State<AppShimmer> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final baseColor = colorScheme.surfaceVariant.withOpacity(0.35);
-    final highlightColor = colorScheme.surfaceVariant.withOpacity(0.75);
+    const baseColor = AppColors.shimmerBase;
+    const highlightColor = AppColors.shimmerHighlight;
     return AnimatedBuilder(
       animation: _controller,
       child: widget.child,
@@ -40,7 +40,7 @@ class _AppShimmerState extends State<AppShimmer> with SingleTickerProviderStateM
           blendMode: BlendMode.srcATop,
           shaderCallback: (bounds) {
             return LinearGradient(
-              colors: [baseColor, highlightColor, baseColor],
+              colors: const [baseColor, highlightColor, baseColor],
               stops: const [0.1, 0.3, 0.4],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -68,12 +68,11 @@ class ShimmerBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withOpacity(0.6),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(radius),
       ),
     );

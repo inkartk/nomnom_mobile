@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
+import 'package:nomnom_mobile/theme/app_spacing.dart';
 
 class StateMessage extends StatelessWidget {
   final IconData icon;
@@ -19,10 +21,9 @@ class StateMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: AppSpacing.pagePadding,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -31,26 +32,28 @@ class StateMessage extends StatelessWidget {
               width: 76,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: colorScheme.primary.withOpacity(0.12),
+                color: AppColors.accent.withValues(alpha: 0.12),
               ),
-              child: Icon(icon, size: 34, color: colorScheme.primary),
+              child: Icon(icon, size: 34, color: AppColors.accent),
             ),
-            const SizedBox(height: 18),
+            AppSpacing.vMd,
             Text(
               title,
-              style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+              style: theme.textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             if (subtitle.isNotEmpty) ...[
-              const SizedBox(height: 8),
+              AppSpacing.vSm,
               Text(
                 subtitle,
-                style: theme.textTheme.bodyMedium?.copyWith(color: theme.hintColor),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
             if (actionLabel != null && onAction != null) ...[
-              const SizedBox(height: 18),
+              AppSpacing.vMd,
               FilledButton(
                 onPressed: onAction,
                 child: Text(actionLabel!),

@@ -28,9 +28,16 @@ class NomNomApp extends StatelessWidget {
       ],
       child: TalkerWrapper(
         talker: appTalker,
-        child: MaterialApp.router(
+        child: BlocListener<AuthBloc, AuthState>(
+          listenWhen: (prev, curr) =>
+              prev.status != curr.status &&
+              curr.status == AuthStatus.unauthenticated,
+          listener: (context, state) {
+            _router.replaceAll([const LoginRoute()]);
+          },
+          child: MaterialApp.router(
           title: 'NomNom',
-          theme: AppTheme.light(),
+          theme: AppTheme.dark(),
           routerConfig: _router.config(
             navigatorObservers: () => [TalkerRouteObserver(appTalker)],
           ),
@@ -41,6 +48,7 @@ class NomNomApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: const [Locale('en'), Locale('ru')],
+        ),
         ),
       ),
     );

@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
+import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
+import 'package:nomnom_mobile/widgets/glass_card.dart';
+import 'package:nomnom_mobile/widgets/gradient_button.dart';
 
 @RoutePage()
 class RegisterPage extends StatefulWidget {
@@ -40,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final theme = Theme.of(context);
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.status == AuthStatus.authenticated) {
@@ -51,27 +56,24 @@ class _RegisterPageState extends State<RegisterPage> {
         body: AppGradientBackground(
           child: SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24),
+              padding: AppSpacing.pagePadding,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(l10n.register, style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w700)),
-                  const SizedBox(height: 6),
-                  Text(l10n.appTitle, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).hintColor)),
-                  const SizedBox(height: 24),
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.06),
-                          blurRadius: 24,
-                          offset: const Offset(0, 12),
-                        ),
-                      ],
+                  Text(
+                    l10n.register,
+                    style: theme.textTheme.headlineMedium,
+                  ),
+                  AppSpacing.vXs,
+                  Text(
+                    'Create your account',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: AppColors.textSecondary,
                     ),
+                  ),
+                  AppSpacing.vXl,
+                  GlassCard(
+                    padding: AppSpacing.cardPaddingLarge,
                     child: Column(
                       children: [
                         TextField(
@@ -81,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             prefixIcon: const Icon(Icons.person_outline),
                           ),
                         ),
-                        const SizedBox(height: 14),
+                        AppSpacing.vMd,
                         TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
@@ -90,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           keyboardType: TextInputType.emailAddress,
                         ),
-                        const SizedBox(height: 14),
+                        AppSpacing.vMd,
                         TextField(
                           controller: _passwordController,
                           decoration: InputDecoration(
@@ -99,15 +101,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           obscureText: true,
                         ),
-                        const SizedBox(height: 20),
+                        AppSpacing.vLg,
                         BlocBuilder<AuthBloc, AuthState>(
                           builder: (context, state) {
-                            final loading = state.formStatus == FormStatus.submitting;
+                            final loading =
+                                state.formStatus == FormStatus.submitting;
                             return SizedBox(
                               width: double.infinity,
-                              child: FilledButton(
+                              child: GradientButton(
                                 onPressed: loading ? null : _submit,
-                                child: Text(loading ? l10n.loading : l10n.register),
+                                child: Text(
+                                  loading ? l10n.loading : l10n.register,
+                                ),
                               ),
                             );
                           },

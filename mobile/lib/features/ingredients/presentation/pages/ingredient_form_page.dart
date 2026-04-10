@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/ingredients/domain/entities/ingredient.dart';
 import 'package:nomnom_mobile/features/ingredients/presentation/bloc/ingredient_bloc.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
+import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/date_utils.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
+import 'package:nomnom_mobile/widgets/glass_card.dart';
+import 'package:nomnom_mobile/widgets/gradient_button.dart';
 
 @RoutePage()
 class IngredientFormPage extends StatefulWidget {
@@ -57,7 +61,8 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
   void _save() {
     final bloc = context.read<IngredientBloc>();
     final ingredient = Ingredient(
-      id: widget.ingredientId ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      id: widget.ingredientId ??
+          DateTime.now().millisecondsSinceEpoch.toString(),
       name: _nameController.text.trim(),
       quantity: double.tryParse(_quantityController.text.trim()) ?? 0,
       unit: _unitController.text.trim(),
@@ -88,59 +93,82 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(l10n.addIngredient)),
       body: AppGradientBackground(
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
+            padding: AppSpacing.pagePadding,
             child: Column(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.06),
-                        blurRadius: 24,
-                        offset: const Offset(0, 12),
-                      ),
-                    ],
-                  ),
+                GlassCard(
+                  padding: AppSpacing.cardPaddingLarge,
                   child: Column(
                     children: [
                       TextField(
                         controller: _nameController,
                         decoration: InputDecoration(labelText: l10n.name),
                       ),
-                      const SizedBox(height: 12),
+                      AppSpacing.vMd,
                       TextField(
                         controller: _quantityController,
                         decoration: InputDecoration(labelText: l10n.quantity),
                         keyboardType: TextInputType.number,
                       ),
-                      const SizedBox(height: 12),
+                      AppSpacing.vMd,
                       TextField(
                         controller: _unitController,
                         decoration: InputDecoration(labelText: l10n.unit),
                       ),
-                      const SizedBox(height: 12),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text(l10n.expirationDate),
-                        subtitle: Text(_expiration != null ? formatDate(_expiration!) : '-'),
-                        trailing: const Icon(Icons.calendar_today),
-                        onTap: _pickDate,
+                      AppSpacing.vMd,
+                      GlassCard(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        borderRadius: 16,
+                        blur: 8,
+                        child: InkWell(
+                          onTap: _pickDate,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      l10n.expirationDate,
+                                      style: theme.textTheme.titleMedium,
+                                    ),
+                                    AppSpacing.vXs,
+                                    Text(
+                                      _expiration != null
+                                          ? formatDate(_expiration!)
+                                          : '-',
+                                      style:
+                                          theme.textTheme.bodyMedium?.copyWith(
+                                        color: AppColors.textSecondary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Icon(
+                                Icons.calendar_today,
+                                color: AppColors.accent,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                AppSpacing.vLg,
                 SizedBox(
                   width: double.infinity,
-                  child: FilledButton(
+                  child: GradientButton(
                     onPressed: _save,
                     child: Text(l10n.save),
                   ),

@@ -17,20 +17,51 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: SplashRoute.page, path: '/splash', initial: true),
-        AutoRoute(page: LoginRoute.page, path: '/login'),
-        AutoRoute(page: RegisterRoute.page, path: '/register'),
-        AutoRoute(
+        CustomRoute(
+          page: SplashRoute.page,
+          path: '/splash',
+          initial: true,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 400,
+        ),
+        CustomRoute(
+          page: LoginRoute.page,
+          path: '/login',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 350,
+        ),
+        CustomRoute(
+          page: RegisterRoute.page,
+          path: '/register',
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
           page: HomeRoute.page,
           path: '/home',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 350,
           children: [
-            AutoRoute(page: IngredientsRoute.page, path: 'ingredients', initial: true),
+            AutoRoute(
+                page: IngredientsRoute.page,
+                path: 'ingredients',
+                initial: true),
             AutoRoute(page: RecipesRoute.page, path: 'recipes'),
             AutoRoute(page: FavoritesRoute.page, path: 'favorites'),
             AutoRoute(page: ProfileRoute.page, path: 'profile'),
           ],
         ),
-        AutoRoute(page: RecipeDetailsRoute.page, path: '/recipe/:id'),
-        AutoRoute(page: IngredientFormRoute.page, path: '/ingredient-form'),
+        CustomRoute(
+          page: RecipeDetailsRoute.page,
+          path: '/recipe/:id',
+          transitionsBuilder: TransitionsBuilders.slideBottom,
+          durationInMilliseconds: 350,
+        ),
+        CustomRoute(
+          page: IngredientFormRoute.page,
+          path: '/ingredient-form',
+          transitionsBuilder: TransitionsBuilders.slideBottom,
+          durationInMilliseconds: 300,
+        ),
       ];
 }

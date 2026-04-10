@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/core/logging/app_talker.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
+import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
+import 'package:nomnom_mobile/widgets/glass_card.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 @RoutePage()
@@ -14,6 +17,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.profile),
@@ -32,7 +36,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: AppGradientBackground(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: AppSpacing.pagePadding,
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               final user = state.user;
@@ -42,45 +46,46 @@ class ProfilePage extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.06),
-                          blurRadius: 24,
-                          offset: const Offset(0, 12),
-                        ),
-                      ],
-                    ),
+                  GlassCard(
+                    padding: AppSpacing.cardPaddingLarge,
                     child: Row(
                       children: [
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                          child: Text(
-                            initials,
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                        Container(
+                          width: AppSpacing.avatarSize,
+                          height: AppSpacing.avatarSize,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              colors: AppColors.accentGradient,
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              initials,
+                              style: theme.textTheme.titleLarge?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 14),
+                        AppSpacing.hMd,
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 user?.name ?? 'Alex',
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+                                style: theme.textTheme.titleLarge,
                               ),
-                              const SizedBox(height: 6),
+                              AppSpacing.vXs,
                               Text(
                                 user?.email ?? 'alex@nomnom.app',
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).hintColor),
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: AppColors.textSecondary,
+                                ),
                               ),
                             ],
                           ),
@@ -88,13 +93,22 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 18),
+                  AppSpacing.vMd,
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton.icon(
-                      onPressed: () => context.read<AuthBloc>().add(const LogoutRequested()),
-                      icon: const Icon(Icons.logout),
-                      label: Text(l10n.logout),
+                      onPressed: () =>
+                          context.read<AuthBloc>().add(const LogoutRequested()),
+                      icon: Icon(Icons.logout, color: AppColors.error.withValues(alpha: 0.8)),
+                      label: Text(
+                        l10n.logout,
+                        style: TextStyle(color: AppColors.error.withValues(alpha: 0.8)),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(
+                          color: AppColors.error.withValues(alpha: 0.3),
+                        ),
+                      ),
                     ),
                   ),
                 ],

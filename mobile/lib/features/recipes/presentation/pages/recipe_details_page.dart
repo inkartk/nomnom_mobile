@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:nomnom_mobile/features/recipes/presentation/bloc/recipe_bloc.dart';
+import 'package:nomnom_mobile/features/recipes/presentation/widgets/recipe_details_shimmer.dart';
+import 'package:nomnom_mobile/theme/app_colors.dart';
+import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
-import 'package:nomnom_mobile/widgets/shimmer.dart';
+import 'package:nomnom_mobile/widgets/glass_card.dart';
+import 'package:nomnom_mobile/widgets/gradient_button.dart';
 import 'package:nomnom_mobile/widgets/state_message.dart';
 
 @RoutePage()
@@ -27,14 +31,16 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(l10n.details)),
       body: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
           if (state.detailsStatus == RecipeStatus.loading) {
-            return const _RecipeDetailsShimmer();
+            return const RecipeDetailsShimmer();
           }
-          if (state.detailsStatus == RecipeStatus.error || state.selected == null) {
+          if (state.detailsStatus == RecipeStatus.error ||
+              state.selected == null) {
             return AppGradientBackground(
               child: StateMessage(
                 icon: Icons.cloud_off_rounded,
@@ -44,79 +50,93 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
             );
           }
           final recipe = state.selected!;
-          final theme = Theme.of(context);
           return AppGradientBackground(
             child: ListView(
-              padding: const EdgeInsets.fromLTRB(16, 88, 16, 24),
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: AppSpacing.radiusLg,
                   child: AspectRatio(
                     aspectRatio: 16 / 9,
-                    child: Image.network(
-                      recipe.imageUrl,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return const Center(child: CircularProgressIndicator(strokeWidth: 2));
-                      },
-                      errorBuilder: (_, __, ___) => Container(
-                        color: theme.colorScheme.surfaceVariant.withOpacity(0.4),
-                        alignment: Alignment.center,
-                        child: Icon(Icons.image_not_supported_outlined, color: theme.colorScheme.outline),
+                    child: Hero(
+                      tag: 'recipe-image-${recipe.id}',
+                      child: Image.network(
+                        recipe.imageUrl,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Container(
+                            color: AppColors.surface,
+                            child: const Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: AppColors.accent,
+                              ),
+                            ),
+                          );
+                        },
+                        errorBuilder: (_, __, ___) => Container(
+                          color: AppColors.surface,
+                          alignment: Alignment.center,
+                          child: const Icon(
+                            Icons.image_not_supported_outlined,
+                            color: AppColors.textTertiary,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
-                Text(recipe.title, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                Text(recipe.description, style: theme.textTheme.bodyMedium),
-                const SizedBox(height: 16),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 18,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
+                AppSpacing.vMd,
+                Text(recipe.title, style: theme.textTheme.headlineSmall),
+                AppSpacing.vSm,
+                Text(
+                  recipe.description,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textSecondary,
                   ),
+                ),
+                AppSpacing.vMd,
+                GlassCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(l10n.steps, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
-                      const SizedBox(height: 10),
+                      Text(l10n.steps, style: theme.textTheme.titleMedium),
+                      AppSpacing.vMd,
                       ...recipe.instructions.asMap().entries.map((entry) {
                         final index = entry.key + 1;
                         final step = entry.value;
                         return Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 12),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 26,
-                                height: 26,
+                                width: AppSpacing.stepNumberSize,
+                                height: AppSpacing.stepNumberSize,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: theme.colorScheme.primary.withOpacity(0.12),
-                                  borderRadius: BorderRadius.circular(8),
+                                  gradient: const LinearGradient(
+                                    colors: AppColors.accentGradient,
+                                  ),
+                                  borderRadius: AppSpacing.radiusSm,
                                 ),
                                 child: Text(
                                   '$index',
-                                  style: theme.textTheme.labelMedium?.copyWith(
-                                    color: theme.colorScheme.primary,
+                                  style:
+                                      theme.textTheme.labelMedium?.copyWith(
+                                    color: Colors.white,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 10),
-                              Expanded(child: Text(step)),
+                              AppSpacing.hMd,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 4),
+                                  child: Text(step),
+                                ),
+                              ),
                             ],
                           ),
                         );
@@ -124,22 +144,37 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
+                AppSpacing.vMd,
                 BlocBuilder<FavoritesBloc, FavoritesState>(
                   builder: (context, favState) {
-                    final isFavorite = favState.items.any((e) => e.recipe.id == recipe.id);
+                    final isFavorite =
+                        favState.items.any((e) => e.recipe.id == recipe.id);
                     return SizedBox(
                       width: double.infinity,
-                      child: FilledButton.icon(
+                      child: GradientButton(
                         onPressed: () {
                           if (isFavorite) {
-                            context.read<FavoritesBloc>().add(RemoveFavoriteRequested(recipe.id));
+                            context
+                                .read<FavoritesBloc>()
+                                .add(RemoveFavoriteRequested(recipe.id));
                           } else {
-                            context.read<FavoritesBloc>().add(AddFavoriteRequested(recipe.id));
+                            context
+                                .read<FavoritesBloc>()
+                                .add(AddFavoriteRequested(recipe.id));
                           }
                         },
-                        icon: Icon(isFavorite ? Icons.bookmark_remove : Icons.bookmark_add),
-                        label: Text(isFavorite ? l10n.removeFromFavorites : l10n.addToFavorites),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(isFavorite
+                                ? Icons.bookmark_remove
+                                : Icons.bookmark_add),
+                            AppSpacing.hSm,
+                            Text(isFavorite
+                                ? l10n.removeFromFavorites
+                                : l10n.addToFavorites),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -148,53 +183,6 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class _RecipeDetailsShimmer extends StatelessWidget {
-  const _RecipeDetailsShimmer();
-
-  @override
-  Widget build(BuildContext context) {
-    return AppGradientBackground(
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 88, 16, 24),
-        children: [
-          AppShimmer(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const ShimmerBox(height: 200, width: double.infinity, radius: 24),
-                const SizedBox(height: 16),
-                const ShimmerBox(height: 20, width: double.infinity, radius: 8),
-                const SizedBox(height: 8),
-                const ShimmerBox(height: 14, width: 220, radius: 8),
-                const SizedBox(height: 16),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ShimmerBox(height: 16, width: 120, radius: 8),
-                      SizedBox(height: 12),
-                      ShimmerBox(height: 12, width: double.infinity, radius: 8),
-                      SizedBox(height: 8),
-                      ShimmerBox(height: 12, width: double.infinity, radius: 8),
-                      SizedBox(height: 8),
-                      ShimmerBox(height: 12, width: 200, radius: 8),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
