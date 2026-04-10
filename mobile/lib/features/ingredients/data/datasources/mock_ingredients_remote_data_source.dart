@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/features/ingredients/data/dto/ingredient_dto.dart';
 import 'package:nomnom_mobile/utils/date_utils.dart';
 
-@LazySingleton()
 class MockIngredientsRemoteDataSource {
   final List<IngredientDto> _items = [
     IngredientDto(

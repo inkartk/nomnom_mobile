@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/features/favorites/data/dto/favorite_recipe_dto.dart';
 import 'package:nomnom_mobile/features/recipes/data/datasources/mock_recipes_remote_data_source.dart';
 
-@LazySingleton()
 class MockFavoritesRemoteDataSource {
   final MockRecipesRemoteDataSource recipesRemote;
   final Set<String> _favoriteIds = {'r1'};

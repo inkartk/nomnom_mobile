@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/features/recipes/data/dto/recipe_dto.dart';
 
-@LazySingleton()
 class MockRecipesRemoteDataSource {
   final List<RecipeDto> _recipes = [
     const RecipeDto(

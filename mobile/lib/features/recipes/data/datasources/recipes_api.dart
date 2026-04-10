@@ -8,6 +8,9 @@ part 'recipes_api.g.dart';
 abstract class RecipesApi {
   factory RecipesApi(Dio dio, {String baseUrl}) = _RecipesApi;
 
+  @GET('/api/recipes')
+  Future<List<RecipeDto>> getRecipes();
+
   @POST('/api/recipes')
   Future<RecipeDto> createRecipe(@Body() Map<String, dynamic> body);
 

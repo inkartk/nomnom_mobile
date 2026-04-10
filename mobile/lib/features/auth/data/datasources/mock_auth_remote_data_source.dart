@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/features/auth/data/dto/user_dto.dart';
 
-@LazySingleton()
 class MockAuthRemoteDataSource {
   UserDto? _cachedUser;
 

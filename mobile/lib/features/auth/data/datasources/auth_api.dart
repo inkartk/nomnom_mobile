@@ -13,4 +13,7 @@ abstract class AuthApi {
 
   @POST('/api/auth/register')
   Future<UserDto> register(@Body() Map<String, dynamic> body);
+
+  @POST('/api/auth/logout')
+  Future<void> logout();
 }

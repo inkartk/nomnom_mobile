@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/features/auth/domain/entities/user.dart';
 import 'package:nomnom_mobile/features/auth/domain/usecases/get_me_usecase.dart';
 import 'package:nomnom_mobile/features/auth/domain/usecases/login_usecase.dart';
+import 'package:nomnom_mobile/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:nomnom_mobile/features/auth/domain/usecases/register_usecase.dart';
 
 part 'auth_event.dart';
@@ -14,11 +15,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
   final GetMeUseCase getMeUseCase;
+  final LogoutUseCase logoutUseCase;
 
   AuthBloc({
     required this.loginUseCase,
     required this.registerUseCase,
     required this.getMeUseCase,
+    required this.logoutUseCase,
   }) : super(const AuthState()) {
     on<AuthStarted>(_onStarted);
     on<LoginRequested>(_onLogin);
@@ -58,7 +61,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _onLogout(LogoutRequested event, Emitter<AuthState> emit) async {
     emit(state.copyWith(status: AuthStatus.loading));
-    await Future.delayed(const Duration(milliseconds: 300));
+    try {
+      await logoutUseCase();
+    } catch (_) {}
     emit(state.copyWith(status: AuthStatus.unauthenticated, user: null));
   }
 }
