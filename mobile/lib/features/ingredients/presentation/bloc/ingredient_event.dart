@@ -11,6 +11,10 @@ class LoadIngredients extends IngredientEvent {
   const LoadIngredients();
 }
 
+class ResetIngredients extends IngredientEvent {
+  const ResetIngredients();
+}
+
 class LoadExpiringSoon extends IngredientEvent {
   const LoadExpiringSoon();
 }
