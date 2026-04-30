@@ -1,8 +1,15 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
+import * as nodemailer from 'nodemailer';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { UserResponseDto } from '../users/dto/user-response.dto';
@@ -26,16 +33,28 @@ export class AuthService {
       throw new ConflictException('Email is already registered');
     }
 
+    const verificationToken = this.generateVerificationToken();
+    const verificationTokenHash = this.hashToken(verificationToken);
+    const verificationExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
     const passwordHash = await bcrypt.hash(dto.password, 10);
     const user = await this.prisma.user.create({
       data: {
         name: dto.name,
         email: dto.email.toLowerCase(),
         passwordHash,
+        emailVerificationTokenHash: verificationTokenHash,
+        emailVerificationExpiresAt: verificationExpiresAt,
       },
     });
 
-    this.setAuthCookie(response, user.id, user.email);
+    await this.sendVerificationEmail(user.email, verificationToken);
+    response.clearCookie(this.cookieName, {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: this.isProduction,
+    });
+
     return UserResponseDto.fromEntity(user);
   }
 
@@ -53,8 +72,63 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
+    if (!user.emailVerified) {
+      throw new UnauthorizedException('Please verify your email before logging in');
+    }
+
     this.setAuthCookie(response, user.id, user.email);
     return UserResponseDto.fromEntity(user);
+  }
+
+  async verifyEmail(token: string): Promise<void> {
+    const tokenHash = this.hashToken(token);
+    const user = await this.prisma.user.findFirst({
+      where: {
+        emailVerificationTokenHash: tokenHash,
+      },
+    });
+
+    if (!user) {
+      throw new BadRequestException('Invalid verification token');
+    }
+
+    if (!user.emailVerificationExpiresAt || user.emailVerificationExpiresAt.getTime() < Date.now()) {
+      throw new BadRequestException('Verification token expired');
+    }
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        emailVerified: true,
+        emailVerificationTokenHash: null,
+        emailVerificationExpiresAt: null,
+      },
+    });
+  }
+
+  async resendVerification(email: string): Promise<void> {
+    const normalizedEmail = email.toLowerCase();
+    const user = await this.prisma.user.findUnique({
+      where: { email: normalizedEmail },
+    });
+
+    if (!user || user.emailVerified) {
+      return;
+    }
+
+    const verificationToken = this.generateVerificationToken();
+    const verificationTokenHash = this.hashToken(verificationToken);
+    const verificationExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        emailVerificationTokenHash: verificationTokenHash,
+        emailVerificationExpiresAt: verificationExpiresAt,
+      },
+    });
+
+    await this.sendVerificationEmail(user.email, verificationToken);
   }
 
   logout(response: Response) {
@@ -81,5 +155,53 @@ export class AuthService {
 
   private get isProduction() {
     return this.configService.get<string>('NODE_ENV') === 'production';
+  }
+
+  private generateVerificationToken(): string {
+    return crypto.randomBytes(32).toString('hex');
+  }
+
+  private hashToken(token: string): string {
+    return crypto.createHash('sha256').update(token).digest('hex');
+  }
+
+  private async sendVerificationEmail(email: string, token: string): Promise<void> {
+    const baseUrl = this.configService.get<string>('APP_BASE_URL') ?? 'http://localhost:3000';
+    const verifyUrl = `${baseUrl}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
+
+    const smtpHost = this.configService.get<string>('SMTP_HOST');
+    const smtpPort = Number(this.configService.get<string>('SMTP_PORT') ?? 587);
+    const smtpUser = this.configService.get<string>('SMTP_USER');
+    const smtpPass = this.configService.get<string>('SMTP_PASS');
+    const smtpFrom = this.configService.get<string>('SMTP_FROM') ?? 'no-reply@nomnom.app';
+
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      console.log(`Email verification URL for ${email}: ${verifyUrl}`);
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
+
+    try {
+      await transporter.sendMail({
+        from: smtpFrom,
+        to: email,
+        subject: 'Verify your NomNom account',
+        text: `Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`,
+        html: `<p>Welcome to NomNom!</p><p>Verify your email by clicking <a href="${verifyUrl}">this link</a>.</p>`,
+      });
+      console.log(`Verification email sent to ${email}`);
+    } catch (err) {
+      console.error(`Failed to send verification email to ${email}:`, err);
+      console.log(`Fallback verification URL for ${email}: ${verifyUrl}`);
+    }
   }
 }

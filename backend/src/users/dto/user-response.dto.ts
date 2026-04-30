@@ -10,11 +10,15 @@ export class UserResponseDto {
   @ApiProperty()
   email!: string;
 
-  static fromEntity(user: { id: string; name: string; email: string }): UserResponseDto {
+  @ApiProperty()
+  emailVerified!: boolean;
+
+  static fromEntity(user: { id: string; name: string; email: string; emailVerified?: boolean }): UserResponseDto {
     return {
       id: user.id,
       name: user.name,
       email: user.email,
+      emailVerified: user.emailVerified ?? false,
     };
   }
 }

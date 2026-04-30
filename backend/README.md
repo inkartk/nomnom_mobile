@@ -101,9 +101,26 @@ Main endpoints:
 
 - `/api/auth/register`
 - `/api/auth/login`
+- `/api/auth/verify-email?token=...`
+- `/api/auth/resend-verification`
 - `/api/users/me`
 - `/api/ingredients`
 - `/api/recipes`
 - `/api/favorites`
+
+Email verification notes:
+
+- New users receive a verification link during registration.
+- Login is blocked until `emailVerified` is true.
+- If SMTP variables are not configured, the verification URL is printed to backend logs.
+
+Optional SMTP env variables:
+
+- `APP_BASE_URL`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
 
 This alpha is basically backend-ready, but the Flutter side still needs the final hookup so it can stop vibing on mocks.
