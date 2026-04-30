@@ -27,10 +27,15 @@ class IngredientBloc extends Bloc<IngredientEvent, IngredientState> {
     required this.getExpiringSoon,
   }) : super(const IngredientState()) {
     on<LoadIngredients>(_onLoad);
+    on<ResetIngredients>(_onReset);
     on<LoadExpiringSoon>(_onLoadExpiring);
     on<AddIngredientRequested>(_onAdd);
     on<UpdateIngredientRequested>(_onUpdate);
     on<DeleteIngredientRequested>(_onDelete);
+  }
+
+  Future<void> _onReset(ResetIngredients event, Emitter<IngredientState> emit) async {
+    emit(const IngredientState());
   }
 
   Future<void> _onLoad(LoadIngredients event, Emitter<IngredientState> emit) async {

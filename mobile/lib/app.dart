@@ -22,19 +22,35 @@ class NomNomApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AuthBloc>()..add(const AuthStarted())),
-        BlocProvider(create: (_) => getIt<IngredientBloc>()..add(const LoadIngredients())),
+        BlocProvider(create: (_) => getIt<IngredientBloc>()),
         BlocProvider(create: (_) => getIt<RecipeBloc>()..add(const LoadRecipes())),
-        BlocProvider(create: (_) => getIt<FavoritesBloc>()..add(const LoadFavorites())),
+        BlocProvider(create: (_) => getIt<FavoritesBloc>()),
       ],
       child: TalkerWrapper(
         talker: appTalker,
-        child: BlocListener<AuthBloc, AuthState>(
-          listenWhen: (prev, curr) =>
-              prev.status != curr.status &&
-              curr.status == AuthStatus.unauthenticated,
-          listener: (context, state) {
-            _router.replaceAll([const LoginRoute()]);
-          },
+        child: MultiBlocListener(
+          listeners: [
+            BlocListener<AuthBloc, AuthState>(
+              listenWhen: (prev, curr) =>
+                  prev.status != curr.status &&
+                  curr.status == AuthStatus.unauthenticated,
+              listener: (context, state) {
+                context.read<IngredientBloc>().add(const ResetIngredients());
+                _router.replaceAll([const LoginRoute()]);
+              },
+            ),
+            BlocListener<AuthBloc, AuthState>(
+              listenWhen: (prev, curr) =>
+                  curr.status == AuthStatus.authenticated &&
+                  (prev.status != AuthStatus.authenticated ||
+                      prev.user?.id != curr.user?.id),
+              listener: (context, state) {
+                context.read<IngredientBloc>().add(const ResetIngredients());
+                context.read<IngredientBloc>().add(const LoadIngredients());
+                context.read<FavoritesBloc>().add(const LoadFavorites());
+              },
+            ),
+          ],
           child: MaterialApp.router(
           title: 'NomNom',
           theme: AppTheme.dark(),
@@ -54,3 +70,4 @@ class NomNomApp extends StatelessWidget {
     );
   }
 }
+

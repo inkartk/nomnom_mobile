@@ -1,5 +1,7 @@
 part of 'auth_bloc.dart';
 
+const Object _sentinel = Object();
+
 enum AuthStatus { initial, loading, authenticated, unauthenticated, failure }
 
 enum FormStatus { idle, submitting, success, failure }
@@ -20,13 +22,13 @@ class AuthState extends Equatable {
   AuthState copyWith({
     AuthStatus? status,
     FormStatus? formStatus,
-    User? user,
+    Object? user = _sentinel,
     String? errorMessage,
   }) {
     return AuthState(
       status: status ?? this.status,
       formStatus: formStatus ?? this.formStatus,
-      user: user ?? this.user,
+      user: identical(user, _sentinel) ? this.user : user as User?,
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }

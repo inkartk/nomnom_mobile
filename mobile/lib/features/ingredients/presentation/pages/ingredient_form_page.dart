@@ -79,11 +79,16 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
 
   Future<void> _pickDate() async {
     final now = DateTime.now();
+    final firstDate = now.subtract(const Duration(days: 1));
+    final lastDate = now.add(const Duration(days: 365));
+    var initialDate = _expiration ?? now;
+    if (initialDate.isBefore(firstDate)) initialDate = firstDate;
+    if (initialDate.isAfter(lastDate)) initialDate = lastDate;
     final selected = await showDatePicker(
       context: context,
-      initialDate: _expiration ?? now,
-      firstDate: now.subtract(const Duration(days: 1)),
-      lastDate: now.add(const Duration(days: 365)),
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
     );
     if (selected != null) {
       setState(() => _expiration = selected);
