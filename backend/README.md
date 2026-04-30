@@ -32,6 +32,37 @@ The backend provides a REST API for authentication, user access, ingredient mana
 - Backend: NestJS, TypeScript, Prisma
 - Database: PostgreSQL
 
+## Run With Docker
+
+From the `backend` folder:
+
+```bash
+docker compose up --build
+```
+
+This starts:
+
+- PostgreSQL on `localhost:5432`
+- Backend API on `http://localhost:3000`
+
+Notes:
+
+- `backend/.env` is loaded automatically for app variables.
+- Inside Docker, `DATABASE_URL` is overridden to use the `postgres` service hostname.
+- Prisma migrations are applied automatically on backend container start.
+
+Stop services:
+
+```bash
+docker compose down
+```
+
+Stop and remove database volume too:
+
+```bash
+docker compose down -v
+```
+
 ## Project Structure
 
 - `src/auth` - authentication logic, guards, and strategies
