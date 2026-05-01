@@ -34,7 +34,14 @@ The backend provides a REST API for authentication, user access, ingredient mana
 
 ## Run With Docker
 
-From the `backend` folder:
+### Prerequisites
+
+- [Docker](https://www.docker.com/) and Docker Compose installed
+- A `.env` file in the `backend/` folder (see [Environment Variables](#environment-variables) below)
+
+### Start
+
+From the `backend/` folder:
 
 ```bash
 docker compose up --build
@@ -45,23 +52,70 @@ This starts:
 - PostgreSQL on `localhost:5432`
 - Backend API on `http://localhost:3000`
 
-Notes:
+Prisma migrations are applied automatically when the backend container starts.
 
-- `backend/.env` is loaded automatically for app variables.
-- Inside Docker, `DATABASE_URL` is overridden to use the `postgres` service hostname.
-- Prisma migrations are applied automatically on backend container start.
+### Subsequent Runs (no rebuild needed)
 
-Stop services:
+```bash
+docker compose up
+```
+
+### Stop
 
 ```bash
 docker compose down
 ```
 
-Stop and remove database volume too:
+To also remove the database volume:
 
 ```bash
 docker compose down -v
 ```
+
+### Seed the Database
+
+To populate the database with sample recipes, ingredients, and a test user:
+
+```bash
+docker cp prisma/seed.ts nomnom-backend:/app/prisma/seed.ts
+docker exec nomnom-backend sh -c "cd /app && npx prisma db seed"
+```
+
+### Browse the Database (Prisma Studio)
+
+To inspect data via a visual UI at `http://localhost:5556`:
+
+```bash
+docker run --rm --name nomnom-studio \
+  --network backend_default \
+  -p 5556:5555 \
+  -e DATABASE_URL="postgresql://postgres:postgres@postgres:5432/nomnom?schema=public" \
+  backend-backend \
+  sh -c "cd /app && npx prisma studio --hostname 0.0.0.0 --port 5555"
+```
+
+## Environment Variables
+
+Create `backend/.env` with the following variables:
+
+```env
+PORT=3000
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/nomnom?schema=public
+JWT_SECRET=your-secret-here
+JWT_EXPIRES_IN=7d
+CLIENT_ORIGIN=http://localhost:3001
+COOKIE_NAME=nomnom_session
+APP_BASE_URL=http://localhost:3000
+
+# Optional — SMTP for email verification
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your@gmail.com
+SMTP_PASS=your-app-password
+SMTP_FROM=your@gmail.com
+```
+
+> If SMTP variables are not set, the verification link is printed to the backend logs instead of being sent by email.
 
 ## Project Structure
 
@@ -112,15 +166,4 @@ Email verification notes:
 
 - New users receive a verification link during registration.
 - Login is blocked until `emailVerified` is true.
-- If SMTP variables are not configured, the verification URL is printed to backend logs.
-
-Optional SMTP env variables:
-
-- `APP_BASE_URL`
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
-
-This alpha is basically backend-ready, but the Flutter side still needs the final hookup so it can stop vibing on mocks.
+- If SMTP variables are not configured, the verification URL is printed to the backend logs so you can verify manually during development.
