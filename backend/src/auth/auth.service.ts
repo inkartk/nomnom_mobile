@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import * as nodemailer from 'nodemailer';
+import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { UserResponseDto } from '../users/dto/user-response.dto';
@@ -169,35 +169,28 @@ export class AuthService {
     const baseUrl = this.configService.get<string>('APP_BASE_URL') ?? 'http://localhost:3000';
     const verifyUrl = `${baseUrl}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
 
-    const smtpHost = this.configService.get<string>('SMTP_HOST');
-    const smtpPort = Number(this.configService.get<string>('SMTP_PORT') ?? 587);
-    const smtpUser = this.configService.get<string>('SMTP_USER');
-    const smtpPass = this.configService.get<string>('SMTP_PASS');
-    const smtpFrom = this.configService.get<string>('SMTP_FROM') ?? 'no-reply@nomnom.app';
+    const apiKey = this.configService.get<string>('MAILERSEND_API_KEY');
+    const fromEmail = this.configService.get<string>('MAILERSEND_FROM_EMAIL') ?? 'noreply@trial-XXXXXX.mlsender.net';
+    const fromName = this.configService.get<string>('MAILERSEND_FROM_NAME') ?? 'NomNom';
 
-    if (!smtpHost || !smtpUser || !smtpPass) {
+    if (!apiKey) {
       console.log(`Email verification URL for ${email}: ${verifyUrl}`);
       return;
     }
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
+    const mailerSend = new MailerSend({ apiKey });
+    const sentFrom = new Sender(fromEmail, fromName);
+    const recipients = [new Recipient(email)];
+
+    const emailParams = new EmailParams()
+      .setFrom(sentFrom)
+      .setTo(recipients)
+      .setSubject('Verify your NomNom account')
+      .setText(`Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`)
+      .setHtml(`<p>Welcome to NomNom!</p><p>Verify your email by clicking <a href="${verifyUrl}">this link</a>.</p>`);
 
     try {
-      await transporter.sendMail({
-        from: smtpFrom,
-        to: email,
-        subject: 'Verify your NomNom account',
-        text: `Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`,
-        html: `<p>Welcome to NomNom!</p><p>Verify your email by clicking <a href="${verifyUrl}">this link</a>.</p>`,
-      });
+      await mailerSend.email.send(emailParams);
       console.log(`Verification email sent to ${email}`);
     } catch (err) {
       console.error(`Failed to send verification email to ${email}:`, err);
