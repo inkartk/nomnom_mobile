@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
@@ -43,9 +43,38 @@ class _LoginPageState extends State<LoginPage> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return BlocListener<AuthBloc, AuthState>(
+      listenWhen: (prev, curr) =>
+          prev.status != curr.status || prev.formStatus != curr.formStatus,
       listener: (context, state) {
         if (state.status == AuthStatus.authenticated) {
           context.router.replace(const HomeRoute());
+        } else if (state.status == AuthStatus.emailUnverified &&
+            state.pendingEmail != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage ??
+                  'Email не подтверждён. Проверьте почту.'),
+              action: SnackBarAction(
+                label: 'Отправить повторно',
+                onPressed: () {
+                  context.read<AuthBloc>().add(
+                        ResendVerificationRequested(
+                          email: state.pendingEmail!,
+                        ),
+                      );
+                  context.router.push(
+                    VerifyEmailPendingRoute(email: state.pendingEmail!),
+                  );
+                },
+              ),
+              duration: const Duration(seconds: 6),
+            ),
+          );
+        } else if (state.formStatus == FormStatus.failure &&
+            state.errorMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.errorMessage!)),
+          );
         }
       },
       child: Scaffold(

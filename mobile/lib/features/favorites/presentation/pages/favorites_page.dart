@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:nomnom_mobile/features/favorites/presentation/widgets/favorite_card.dart';
 import 'package:nomnom_mobile/features/favorites/presentation/widgets/favorites_shimmer.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/animated_list_item.dart';

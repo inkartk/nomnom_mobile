@@ -37,4 +37,14 @@ class AuthRepositoryImpl implements AuthRepository {
     await _authApi.logout();
     await _tokenStorage.clearToken();
   }
+
+  @override
+  Future<void> verifyEmail(String token) async {
+    await _authApi.verifyEmail(token);
+  }
+
+  @override
+  Future<void> resendVerification(String email) async {
+    await _authApi.resendVerification({'email': email});
+  }
 }

@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
@@ -46,9 +46,21 @@ class _RegisterPageState extends State<RegisterPage> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return BlocListener<AuthBloc, AuthState>(
+      listenWhen: (prev, curr) =>
+          prev.status != curr.status || prev.formStatus != curr.formStatus,
       listener: (context, state) {
         if (state.status == AuthStatus.authenticated) {
           context.router.replace(const HomeRoute());
+        } else if (state.formStatus == FormStatus.emailVerificationPending &&
+            state.pendingEmail != null) {
+          context.router.replace(
+            VerifyEmailPendingRoute(email: state.pendingEmail!),
+          );
+        } else if (state.formStatus == FormStatus.failure &&
+            state.errorMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.errorMessage!)),
+          );
         }
       },
       child: Scaffold(

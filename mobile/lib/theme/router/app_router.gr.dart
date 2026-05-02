@@ -84,6 +84,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
+    VerifyEmailPendingRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyEmailPendingRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: VerifyEmailPendingPage(
+          key: args.key,
+          email: args.email,
+        ),
+      );
+    },
   };
 }
 
@@ -273,4 +283,43 @@ class SplashRoute extends PageRouteInfo<void> {
   static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [VerifyEmailPendingPage]
+class VerifyEmailPendingRoute
+    extends PageRouteInfo<VerifyEmailPendingRouteArgs> {
+  VerifyEmailPendingRoute({
+    Key? key,
+    required String email,
+    List<PageRouteInfo>? children,
+  }) : super(
+          VerifyEmailPendingRoute.name,
+          args: VerifyEmailPendingRouteArgs(
+            key: key,
+            email: email,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'VerifyEmailPendingRoute';
+
+  static const PageInfo<VerifyEmailPendingRouteArgs> page =
+      PageInfo<VerifyEmailPendingRouteArgs>(name);
+}
+
+class VerifyEmailPendingRouteArgs {
+  const VerifyEmailPendingRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'VerifyEmailPendingRouteArgs{key: $key, email: $email}';
+  }
 }

@@ -7,7 +7,7 @@ import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:nomnom_mobile/features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:nomnom_mobile/features/ingredients/presentation/bloc/ingredient_bloc.dart';
 import 'package:nomnom_mobile/features/recipes/presentation/bloc/recipe_bloc.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:talker_flutter/talker_flutter.dart';

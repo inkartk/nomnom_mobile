@@ -35,3 +35,25 @@ class RegisterRequested extends AuthEvent {
 class LogoutRequested extends AuthEvent {
   const LogoutRequested();
 }
+
+class ResendVerificationRequested extends AuthEvent {
+  final String email;
+
+  const ResendVerificationRequested({required this.email});
+
+  @override
+  List<Object?> get props => [email];
+}
+
+class VerifyEmailRequested extends AuthEvent {
+  final String token;
+
+  const VerifyEmailRequested({required this.token});
+
+  @override
+  List<Object?> get props => [token];
+}
+
+class AuthFormReset extends AuthEvent {
+  const AuthFormReset();
+}

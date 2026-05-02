@@ -10,6 +10,7 @@ import 'package:nomnom_mobile/features/recipes/presentation/pages/recipes_page.d
 import 'package:nomnom_mobile/features/auth/presentation/pages/splash_page.dart';
 import 'package:nomnom_mobile/features/auth/presentation/pages/home_page.dart';
 import 'package:nomnom_mobile/features/auth/presentation/pages/profile_page.dart';
+import 'package:nomnom_mobile/features/auth/presentation/pages/verify_email_pending_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -34,6 +35,12 @@ class AppRouter extends _$AppRouter {
           page: RegisterRoute.page,
           path: '/register',
           transitionsBuilder: TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
+          page: VerifyEmailPendingRoute.page,
+          path: '/verify-email-pending',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
           durationInMilliseconds: 300,
         ),
         CustomRoute(
