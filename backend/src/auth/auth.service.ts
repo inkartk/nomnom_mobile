@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { Resend } from 'resend';
+import * as nodemailer from 'nodemailer';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { UserResponseDto } from '../users/dto/user-response.dto';
@@ -169,19 +169,30 @@ export class AuthService {
     const baseUrl = this.configService.get<string>('APP_BASE_URL') ?? 'http://localhost:3000';
     const verifyUrl = `${baseUrl}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
 
-    const apiKey = this.configService.get<string>('RESEND_API_KEY');
+    const smtpHost = this.configService.get<string>('SMTP_HOST');
+    const smtpPort = Number(this.configService.get<string>('SMTP_PORT') ?? 587);
+    const smtpUser = this.configService.get<string>('SMTP_USER');
+    const smtpPass = this.configService.get<string>('SMTP_PASS');
+    const smtpFrom = this.configService.get<string>('SMTP_FROM') ?? 'no-reply@nomnom.app';
 
-    if (!apiKey) {
+    if (!smtpHost || !smtpUser || !smtpPass) {
       console.log(`Email verification URL for ${email}: ${verifyUrl}`);
       return;
     }
 
-    const resend = new Resend(apiKey);
-    const from = this.configService.get<string>('RESEND_FROM') ?? 'NomNom <onboarding@resend.dev>';
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
 
     try {
-      await resend.emails.send({
-        from,
+      await transporter.sendMail({
+        from: smtpFrom,
         to: email,
         subject: 'Verify your NomNom account',
         text: `Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`,
