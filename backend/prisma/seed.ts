@@ -515,7 +515,7 @@ async function main() {
         'Cook fresh ramen noodles, place in bowls and ladle hot broth over.',
         'Top with chashu slices, egg, nori, bamboo shoots and spring onion.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=800',
     },
     {
       title: 'Chicken Teriyaki',
@@ -563,7 +563,7 @@ async function main() {
         'Add cubed silken tofu and rehydrated wakame.',
         'Serve immediately garnished with sliced spring onion.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800',
     },
     {
       title: 'Takoyaki',
@@ -673,7 +673,7 @@ async function main() {
         'Cook noodles, toss with sesame oil and soy sauce.',
         'Combine everything and garnish with sesame seeds.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1498654896293-37aaa4b2f55a?w=800',
     },
     {
       title: 'Kimchi Jjigae',
@@ -746,7 +746,7 @@ async function main() {
         'Add potatoes and peanuts, simmer 1.5 hours until tender.',
         'Adjust seasoning with fish sauce and serve with rice.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=800',
     },
     {
       title: 'Som Tum',
@@ -758,7 +758,7 @@ async function main() {
         'Add papaya and pound lightly to bruise.',
         'Finish with dried shrimp and peanuts. Serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1570625949-f9083a29a8e2?w=800',
     },
     {
       title: 'Tom Kha Gai',
@@ -770,7 +770,7 @@ async function main() {
         'Season with fish sauce, lime juice and sugar.',
         'Serve garnished with coriander and chilli slices.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800',
     },
     // ── Vietnamese ──
     {
@@ -807,7 +807,7 @@ async function main() {
         'Place grilled pork in broth.',
         'Serve with cold rice vermicelli, fresh herbs and spring rolls.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1554649439-9309c394a2e0?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?w=800',
     },
     {
       title: 'Goi Cuon',
@@ -819,7 +819,7 @@ async function main() {
         'Make peanut dipping sauce: peanut butter, hoisin, lime and water.',
         'Serve immediately with the dipping sauce.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1569131741621-619f58f57f59?w=800',
     },
     // ── Indian ──
     {
@@ -880,7 +880,7 @@ async function main() {
         'Pour tarka over spinach and potato.',
         'Season with lemon juice, salt and serve with chapati.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1484972759836-b93f9ef2b293?w=800',
     },
     {
       title: 'Samosa',
@@ -941,7 +941,7 @@ async function main() {
         'Fry sliced onions until deeply caramelised.',
         'Layer rice, lentils and pasta, top with tomato sauce, onions and vinegar.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1491510736079-4a46ddc9c9f0?w=800',
     },
     {
       title: 'Tabbouleh',
@@ -953,7 +953,7 @@ async function main() {
         'Mix everything with lemon juice, olive oil and salt.',
         'Refrigerate 30 minutes before serving.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800',
     },
     {
       title: 'Mansaf',
@@ -977,7 +977,7 @@ async function main() {
         'Score into diamonds and bake at 160°C for 45-50 minutes until golden.',
         'Pour cold honey syrup over hot baklava. Rest 4 hours before serving.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1617197671753-0a5e7cd2b2a2?w=800',
     },
     {
       title: 'Mutabbal',
@@ -989,7 +989,7 @@ async function main() {
         'Spread on plate, drizzle with olive oil.',
         'Top with pomegranate seeds and fresh parsley.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1600891963935-9e68c1748f50?w=800',
     },
     // ── Mexican / Latin ──
     {
@@ -1014,7 +1014,7 @@ async function main() {
         'Shred pork and add back to the broth.',
         'Serve garnished with cabbage, radish, lime, oregano and tostadas.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1534422298391-e4f8317faa65?w=800',
     },
     {
       title: 'Guacamole',
@@ -1026,7 +1026,7 @@ async function main() {
         'Season with salt and a pinch of cumin.',
         'Cover directly with cling film to prevent browning. Serve with tortilla chips.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c820?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1604909052743-94e838986d24?w=800',
     },
     {
       title: 'Chiles en Nogada',
@@ -1038,7 +1038,7 @@ async function main() {
         'Blend walnuts with cream cheese, crema and sherry for nogada sauce.',
         'Pour sauce over peppers and garnish with pomegranate seeds and parsley.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1505253304499-671c55fb57fe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1536306328832-06dc1a8f2655?w=800',
     },
     {
       title: 'Arroz con Leche',
@@ -1050,7 +1050,7 @@ async function main() {
         'Stir in sugar and lemon zest.',
         'Chill and serve dusted with ground cinnamon.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800',
     },
     {
       title: 'Ceviche',
@@ -1087,7 +1087,7 @@ async function main() {
         'Braise covered at 160°C for 1.5 hours.',
         'Reduce sauce if needed and serve with crusty bread or potatoes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c2?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=800',
     },
     {
       title: 'Ratatouille',
@@ -1099,7 +1099,7 @@ async function main() {
         'Simmer uncovered for 45 minutes until vegetables are very soft.',
         'Season, drizzle with olive oil and serve warm or at room temperature.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1572453800999-e8d2d1589b7c?w=800',
     },
     {
       title: 'Crème Brûlée',
@@ -1111,7 +1111,7 @@ async function main() {
         'Strain into ramekins and bake in a water bath at 150°C for 35-40 minutes.',
         'Chill, then sprinkle sugar and caramelise with a blowtorch.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=800',
     },
     {
       title: 'Soupe de Poisson',
@@ -1123,7 +1123,7 @@ async function main() {
         'Blend, strain and season with salt and cayenne.',
         'Serve with toasted baguette, rouille and grated gruyère.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1497888329096-51c27176c24d?w=800',
     },
     {
       title: 'Crêpes Suzette',
@@ -1135,7 +1135,7 @@ async function main() {
         'Add crêpes to sauce and warm through.',
         'Add orange liqueur and carefully flambé. Serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800',
     },
     // ── Eastern European ──
     {
@@ -1148,7 +1148,7 @@ async function main() {
         'Add grated beets and a splash of red wine vinegar.',
         'Season, serve with a dollop of sour cream and fresh dill.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1628960198838-77804e8f1ae7?w=800',
     },
     {
       title: 'Pierogi',
@@ -1160,7 +1160,7 @@ async function main() {
         'Boil in salted water until they float, then pan-fry in butter.',
         'Serve with caramelised onion, sour cream and crispy lardons.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1560717845-968823efbee1?w=800',
     },
     {
       title: 'Goulash',
@@ -1172,7 +1172,7 @@ async function main() {
         'Simmer 2 hours until beef is tender, add potatoes and peppers.',
         'Season and serve with nokedli (small dumplings) or crusty bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800',
     },
     {
       title: 'Plov',
@@ -1184,7 +1184,7 @@ async function main() {
         'Add cumin, coriander, barberries and whole garlic heads.',
         'Add washed rice, pour boiling water to just cover, cover and steam 25 minutes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800',
     },
     {
       title: 'Shashlik',
@@ -1208,7 +1208,7 @@ async function main() {
         'Pinch edges firmly to seal.',
         'Boil until they float, drain and serve with sour cream and cherry sauce.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1596627116790-af6f46dddbcb?w=800',
     },
     // ── American / Western ──
     {
@@ -1221,7 +1221,7 @@ async function main() {
         'Add heavy cream and fresh clams.',
         'Season and serve in bowls topped with bacon and oyster crackers.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1599861737537-3e31d10e5c73?w=800',
     },
     {
       title: 'Mac and Cheese',
@@ -1245,7 +1245,7 @@ async function main() {
         'Toss with your favourite BBQ sauce.',
         'Serve on brioche buns with coleslaw and pickles.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1544025162-d76538b367bc?w=800',
     },
     {
       title: 'Buffalo Wings',
@@ -1257,7 +1257,7 @@ async function main() {
         'Toss hot wings in buffalo sauce.',
         'Serve with celery, carrot sticks and blue cheese dipping sauce.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800',
     },
     {
       title: 'New York Cheesecake',
@@ -1269,7 +1269,7 @@ async function main() {
         'Cool in oven with door ajar to prevent cracking.',
         'Refrigerate overnight and serve with fresh berries.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=800',
     },
     {
       title: 'Lobster Bisque',
@@ -1281,7 +1281,7 @@ async function main() {
         'Blend and strain through a fine sieve.',
         'Adjust seasoning, add lobster meat chunks and serve with a cream swirl.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800',
     },
     {
       title: 'Eggs Benedict',
@@ -1293,7 +1293,7 @@ async function main() {
         'Toast English muffins and warm Canadian bacon.',
         'Assemble: muffin, bacon, egg, hollandaise. Serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=800',
     },
     {
       title: 'Chocolate Chip Cookies',
@@ -1318,7 +1318,7 @@ async function main() {
         'Pour in warm chicken broth with saffron and arrange ingredients.',
         'Cook uncovered until rice is tender and a socarrat crust forms.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1534352956036-cd81e27dd615?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1504956297040-5a9d30c8e4ed?w=800',
     },
     {
       title: 'Gazpacho',
@@ -1330,7 +1330,7 @@ async function main() {
         'Season with salt and adjust acidity.',
         'Chill at least 2 hours. Serve with diced garnishes on top.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=800',
     },
     {
       title: 'Patatas Bravas',
@@ -1342,7 +1342,7 @@ async function main() {
         'Make aioli: blend garlic, egg yolk, lemon and olive oil.',
         'Serve potatoes drizzled with bravas sauce and aioli.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1568569350062-ebfa3cb195df?w=800',
     },
     {
       title: 'Seafood Paella',
@@ -1366,7 +1366,7 @@ async function main() {
         'Layer aubergine, meat sauce, more aubergine and béchamel.',
         'Bake at 180°C for 45 minutes until golden. Rest before serving.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1619895092538-128341789043?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1599978924779-40c7869e3a52?w=800',
     },
     {
       title: 'Spanakopita',
@@ -1378,7 +1378,7 @@ async function main() {
         'Spread filling and cover with remaining buttered phyllo.',
         'Score top, brush with egg wash and bake at 180°C for 40 minutes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800',
     },
     // ── African ──
     {
@@ -1391,7 +1391,7 @@ async function main() {
         'Cook covered over low heat, checking and adding water as needed.',
         'Serve with grilled chicken, fried plantain and coleslaw.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1569058242272-44b338d51fca?w=800',
     },
     {
       title: 'Tagine with Preserved Lemon',
@@ -1403,7 +1403,7 @@ async function main() {
         'Cover and cook at 160°C for 2 hours.',
         'Add green olives and preserved lemon rind. Simmer 20 more minutes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1512058454905-6b841e7ad132?w=800',
     },
     {
       title: 'Injera with Doro Wat',
@@ -1415,7 +1415,7 @@ async function main() {
         'Add boiled eggs and simmer 30 minutes.',
         'Serve doro wat on injera with other vegetable stews around it.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1582957036049-44a9f5f7bc00?w=800',
     },
     {
       title: 'Suya',
@@ -1427,7 +1427,7 @@ async function main() {
         'Grill over high heat for 3-4 minutes per side.',
         'Serve with sliced onion, tomato and extra suya powder.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=800',
     },
     // ── More world classics ──
     {
@@ -1440,7 +1440,7 @@ async function main() {
         'Keep cooking, stirring occasionally, for 2-3 hours until almost dry.',
         'Continue frying in its own oil until dark and intensely flavoured.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800',
     },
     {
       title: 'Nasi Goreng',
@@ -1452,7 +1452,7 @@ async function main() {
         'Add rice and stir-fry on high heat with kecap manis and soy sauce.',
         'Top with a fried egg, cucumber slices and prawn crackers.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800',
     },
     {
       title: 'Hainanese Chicken Rice',
@@ -1464,7 +1464,7 @@ async function main() {
         'Make three sauces: chilli-ginger, dark soy, and ginger-sesame.',
         'Slice chicken, serve over rice with broth, sauces and cucumber.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=800',
     },
     {
       title: 'Laksa',
@@ -1476,7 +1476,7 @@ async function main() {
         'Cook rice noodles separately and place in bowls.',
         'Ladle hot laksa broth over, top with prawns, egg and sambal.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1603095285328-89c9f6b0cc88?w=800',
     },
     {
       title: 'Beef Pho Tai',
@@ -1488,7 +1488,7 @@ async function main() {
         'Add thinly sliced raw beef on top.',
         'Ladle boiling broth over to cook the beef. Serve with herbs and hoisin.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=800',
     },
     {
       title: 'Soto Ayam',
@@ -1500,7 +1500,7 @@ async function main() {
         'Strain broth and return with shredded chicken.',
         'Serve over glass noodles with egg, crispy shallots and lime.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800',
     },
     {
       title: 'Okonomiyaki',
@@ -1512,7 +1512,7 @@ async function main() {
         'Cook the other side until cooked through.',
         'Top with okonomiyaki sauce, Japanese mayo, bonito and aonori.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800',
     },
     {
       title: 'Chilli Con Carne',
@@ -1524,7 +1524,7 @@ async function main() {
         'Add crushed tomatoes and kidney beans, simmer 1 hour.',
         'Serve with rice or cornbread, topped with sour cream and cheddar.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=800',
     },
     {
       title: 'Fish and Chips',
@@ -1536,7 +1536,7 @@ async function main() {
         'Raise chip oil temp and fry chips a second time until crispy.',
         'Serve with mushy peas, tartare sauce, malt vinegar and lemon.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1614377385291-f3ef1e4d7585?w=800',
     },
     {
       title: 'Bangers and Mash',
@@ -1548,7 +1548,7 @@ async function main() {
         'Add flour, then pour in beef stock, thyme and Worcestershire sauce.',
         'Simmer gravy until thickened. Serve sausages over mash with gravy.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1574521043882-eead7d1ba14e?w=800',
     },
     {
       title: 'Scotch Eggs',
@@ -1560,7 +1560,7 @@ async function main() {
         'Roll in flour, beaten egg and fine breadcrumbs.',
         'Deep fry at 170°C for 6-7 minutes until golden. Rest before cutting.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=800',
     },
     {
       title: 'Chicken Satay',
@@ -1572,7 +1572,7 @@ async function main() {
         'Make peanut sauce: blend roasted peanuts, coconut milk, chilli and lime.',
         'Serve skewers with peanut sauce, cucumber salad and rice cakes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1476224203421-74177fbe463f?w=800',
     },
     {
       title: 'Spring Rolls',
@@ -1584,7 +1584,7 @@ async function main() {
         'Deep fry at 170°C until golden and crispy.',
         'Drain and serve with sweet chilli sauce and lime wedges.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1441034281545-49c3ffb891c3?w=800',
     },
     {
       title: 'Dumplings Soup',
@@ -1596,7 +1596,7 @@ async function main() {
         'Cook wontons in the broth for 4-5 minutes.',
         'Serve in bowls topped with spring onion, sesame oil and white pepper.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1547592167-e64ab4bed9e1?w=800',
     },
     {
       title: 'Beef Wellington',
@@ -1608,7 +1608,7 @@ async function main() {
         'Egg-wash, score the top and rest 15 minutes in the fridge.',
         'Bake at 200°C for 25-30 minutes for medium-rare. Rest 10 minutes before slicing.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c2?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1574786527860-f2e274867c91?w=800',
     },
     {
       title: 'Lamb Tagine with Apricots',
@@ -1620,7 +1620,7 @@ async function main() {
         'Add dried apricots and cook a further 30 minutes.',
         'Serve over couscous, topped with toasted almonds and coriander.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1565299618784-3ac46440feec?w=800',
     },
     {
       title: 'Nicoise Salad',
@@ -1632,7 +1632,7 @@ async function main() {
         'Arrange lettuce, potatoes, beans, tuna, eggs, tomatoes and olives.',
         'Drizzle with dressing and season with salt and pepper.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800',
     },
     {
       title: 'Lobster Thermidor',
@@ -1644,7 +1644,7 @@ async function main() {
         'Spoon sauce into lobster shells and top with gruyère.',
         'Grill until golden and bubbling. Serve with crusty bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=800',
     },
     {
       title: 'Chicken Marsala',
@@ -1656,7 +1656,7 @@ async function main() {
         'Deglaze with Marsala wine, add chicken broth and reduce.',
         'Return chicken, finish with butter and chopped parsley.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1549718498-65b4e8ceef55?w=800',
     },
     {
       title: 'Spanisch Tortilla',
@@ -1668,7 +1668,7 @@ async function main() {
         'Cook in a pan over medium heat, then flip with a plate.',
         'Cook the other side for 2 minutes. Serve warm or at room temperature.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1529042410682-f2ced832222b?w=800',
     },
     {
       title: 'Pulled Jackfruit Tacos',
@@ -1680,7 +1680,7 @@ async function main() {
         'Make mango salsa: mango, red onion, coriander, lime and chilli.',
         'Warm tortillas and fill with jackfruit and salsa.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1561150831-b9af37fd35cc?w=800',
     },
     {
       title: 'Sweet Potato Curry',
@@ -1692,7 +1692,7 @@ async function main() {
         'Pour in coconut milk and vegetable stock, simmer 20 minutes.',
         'Stir in spinach until wilted. Serve with basmati rice.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1574236170878-9b36d9dd3e6f?w=800',
     },
     {
       title: 'Minestrone',
@@ -1704,7 +1704,7 @@ async function main() {
         'Add small pasta and cook until al dente.',
         'Season, serve with a drizzle of olive oil and grated parmesan.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1534512773070-8cb72fd54131?w=800',
     },
     {
       title: 'Lemon Chicken Orzo Soup',
@@ -1716,7 +1716,7 @@ async function main() {
         'Temper by slowly adding hot broth to the egg mixture, then return to pot.',
         'Stir in chicken and season. Serve with crusty bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1528712306091-ed0763094c98?w=800',
     },
     {
       title: 'Shakshuka Verde',
@@ -1728,7 +1728,7 @@ async function main() {
         'Add crumbled feta, create wells and crack in eggs.',
         'Cover and cook until whites are set. Serve with warm pita.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1590412200988-a436970781fa?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1471553545690-6d59e0fa0bcf?w=800',
     },
     {
       title: 'Roasted Veggie Grain Bowl',
@@ -1740,7 +1740,7 @@ async function main() {
         'Make dressing: tahini, lemon, garlic and water.',
         'Assemble bowls with farro, roasted veg and drizzle generously with dressing.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1540914124281-342587941389?w=800',
     },
     {
       title: 'Spiced Lamb Kofta',
@@ -1752,7 +1752,7 @@ async function main() {
         'Grill over high heat, turning, for 10-12 minutes.',
         'Serve with warm pita, sliced tomato, pickled onion and tzatziki.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800',
     },
     {
       title: 'Bruschetta al Pomodoro',
@@ -1776,7 +1776,7 @@ async function main() {
         'Poach eggs for 3 minutes in simmering water with a splash of vinegar.',
         'Assemble: muffin, spinach, egg, hollandaise. Serve at once.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800',
     },
     {
       title: 'Spicy Tuna Crispy Rice',
@@ -1788,7 +1788,7 @@ async function main() {
         'Top each rice block with spicy tuna.',
         'Garnish with jalapeño, masago and spring onion.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1617196034199-5d81e9b8e3b3?w=800',
     },
     {
       title: 'Honey Sriracha Cauliflower',
@@ -1800,7 +1800,7 @@ async function main() {
         'Toss hot cauliflower in glaze and return to oven for 5 minutes.',
         'Garnish with sesame seeds and spring onion. Serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=800',
     },
     {
       title: 'White Bean Soup',
@@ -1812,7 +1812,7 @@ async function main() {
         'Simmer 20 minutes, then blend a third of the soup for texture.',
         'Adjust seasoning, serve with olive oil, pancetta and grilled bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1609780447631-05b93e5a3dca?w=800',
     },
     {
       title: 'Cottage Pie',
@@ -1824,7 +1824,7 @@ async function main() {
         'Make smooth mashed potato with butter and cream.',
         'Top meat with mash, rough the surface and bake at 200°C for 25 minutes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1619895092538-128341789043?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1574871786514-46e1680ea587?w=800',
     },
     {
       title: 'Chicken Noodle Soup',
@@ -1836,7 +1836,7 @@ async function main() {
         'Add fresh carrots, celery and egg noodles, simmer 10 minutes.',
         'Season with salt and plenty of fresh dill or parsley.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1562802378-063ec186a863?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1456324504049-a8e14c3a37fe?w=800',
     },
     {
       title: 'Tamagoyaki',
@@ -1848,7 +1848,7 @@ async function main() {
         'Add more egg layers, rolling each over the previous.',
         'Shape with a bamboo mat while still warm. Slice and serve.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1617936255498-b3b47c7aad9c?w=800',
     },
     {
       title: 'Garlic Butter Shrimp',
@@ -1860,7 +1860,7 @@ async function main() {
         'Reduce by half, add more butter and return shrimp.',
         'Toss with parsley and lemon juice. Serve with crusty bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=800',
     },
     {
       title: 'Mango Sticky Rice',
@@ -1872,7 +1872,7 @@ async function main() {
         'Make a thin coconut sauce by simmering coconut milk with sugar.',
         'Serve rice with sliced ripe mango and drizzle of coconut sauce.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=800',
     },
     {
       title: 'Tres Leches Cake',
@@ -1884,7 +1884,7 @@ async function main() {
         'Refrigerate at least 4 hours until fully absorbed.',
         'Top with whipped cream and dust with cinnamon before serving.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800',
     },
     {
       title: 'Panna Cotta',
@@ -1896,7 +1896,7 @@ async function main() {
         'Pour into lightly oiled moulds and refrigerate 4 hours until set.',
         'Unmould onto plates and serve with fresh raspberry coulis.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800',
     },
     {
       title: 'Cinnamon Rolls',
@@ -1932,7 +1932,7 @@ async function main() {
         'Split and fill with whipped cream or crème pâtissière.',
         'Drizzle with warm melted dark chocolate sauce.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=800',
     },
     {
       title: 'Lemon Tart',
@@ -1944,7 +1944,7 @@ async function main() {
         'Beat in cold butter cubes until glossy and smooth.',
         'Pour into tart shell and refrigerate 2 hours until set.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800',
     },
     {
       title: 'Strawberry Shortcake',
@@ -1956,7 +1956,7 @@ async function main() {
         'Layer first sponge with whipped cream and most of the strawberries.',
         'Top with second sponge, more cream and remaining strawberries.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=800',
     },
     {
       title: 'Matcha Ice Cream',
@@ -1968,7 +1968,7 @@ async function main() {
         'Fold matcha mixture into whipped cream.',
         'Pour into container and freeze at least 6 hours.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800',
     },
     {
       title: 'Baked Feta Pasta',
@@ -1980,7 +1980,7 @@ async function main() {
         'Crush everything together into a creamy sauce.',
         'Toss with hot cooked pasta and fresh basil.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800',
     },
     {
       title: 'Pesto Genovese Pasta',
@@ -1992,7 +1992,7 @@ async function main() {
         'Toss pasta with pesto, loosening with pasta water as needed.',
         'Serve with extra parmesan and a drizzle of olive oil.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1473093226705-5e8e5d97aed1?w=800',
     },
     {
       title: 'Arancini',
@@ -2004,7 +2004,7 @@ async function main() {
         'Coat in flour, egg and breadcrumbs.',
         'Deep fry at 170°C until golden and crispy all over.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1559209172-0ff8f6d049d3?w=800',
     },
     {
       title: 'Saltimbocca',
@@ -2016,7 +2016,7 @@ async function main() {
         'Flip and cook 1 minute more.',
         'Deglaze with white wine, reduce and pour over escalopes. Serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1503764654157-72d979d9af2f?w=800',
     },
     {
       title: 'Ossobuco',
@@ -2028,7 +2028,7 @@ async function main() {
         'Make gremolata: mix lemon zest, garlic and flat-leaf parsley.',
         'Serve over saffron risotto topped with gremolata.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1594834749740-74b3f6764be4?w=800',
     },
     {
       title: 'Puttanesca',
@@ -2040,7 +2040,7 @@ async function main() {
         'Toss with cooked spaghetti, adding pasta water to loosen.',
         'Finish with fresh parsley. No cheese needed.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1548940740-2a6aadab4e9b?w=800',
     },
     {
       title: 'Eggs in Purgatory',
@@ -2052,7 +2052,7 @@ async function main() {
         'Season and bake at 180°C for 8-10 minutes until whites are set.',
         'Scatter torn basil over and serve with thick slices of toasted bread.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1590412200988-a436970781fa?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1536304993881-ff86e6f18e5d?w=800',
     },
     {
       title: 'Rösti',
@@ -2064,7 +2064,7 @@ async function main() {
         'Cook over medium heat 10 minutes until golden underneath.',
         'Flip using a plate and cook 10 more minutes. Serve with sour cream.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1513133573517-25e04f75c18c?w=800',
     },
     {
       title: 'Cheese Fondue',
@@ -2076,7 +2076,7 @@ async function main() {
         'Add a splash of kirsch and a pinch of nutmeg.',
         'Serve with cubed bread, cornichons and charcuterie for dipping.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800',
     },
     {
       title: 'Pan con Tomate',
@@ -2088,7 +2088,7 @@ async function main() {
         'Drizzle generously with the best olive oil available.',
         'Season with flaky sea salt and serve as a tapa or breakfast.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1558030137-a56c1b002af7?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800',
     },
     {
       title: 'Fattoush',
@@ -2100,7 +2100,7 @@ async function main() {
         'Combine vegetables, pour dressing and toss well.',
         'Add pita crisps just before serving to keep their crunch.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800',
     },
     {
       title: 'Chana Masala',
@@ -2112,7 +2112,7 @@ async function main() {
         'Add chickpeas with some cooking water and simmer 20 minutes.',
         'Finish with amchur (dry mango powder) and fresh coriander.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800',
     },
     {
       title: 'Braised Short Ribs',
@@ -2124,7 +2124,7 @@ async function main() {
         'Add beef stock, garlic, thyme and bay leaves.',
         'Braise at 160°C for 3-3.5 hours until meat falls from bone.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=800',
     },
     {
       title: 'Avocado and Corn Salad',
@@ -2136,7 +2136,7 @@ async function main() {
         'Mix lime juice, olive oil, cumin, coriander and chilli flakes for dressing.',
         'Combine corn, avocado, tomato and dressing. Season with salt.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1626200853397-c7a4befc1e67?w=800',
     },
     {
       title: 'Butter Garlic Naan',
@@ -2148,7 +2148,7 @@ async function main() {
         'Cook on a very hot cast iron pan until bubbles form, then flip.',
         'Brush with melted garlic butter and chopped coriander immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800',
     },
     {
       title: 'Tuna Poke Bowl',
@@ -2160,7 +2160,7 @@ async function main() {
         'Add edamame, cucumber, avocado, pickled ginger and nori strips.',
         'Drizzle with sriracha mayo and sprinkle with sesame seeds.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1544013268-ab7d51f5f6e2?w=800',
     },
     {
       title: 'Shrimp Pad See Ew',
@@ -2172,7 +2172,7 @@ async function main() {
         'Add noodles, Chinese broccoli and sauce: dark soy, oyster sauce and sugar.',
         'Toss everything together over high heat and serve immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1534184954596-9eedf5b6b7a6?w=800',
     },
     {
       title: 'Veggie Burrito Bowl',
@@ -2184,7 +2184,7 @@ async function main() {
         'Prepare toppings: guacamole, salsa, sour cream and coriander.',
         'Build bowls with rice, beans, veg and all the toppings.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1626200209782-2c36caf6b6e3?w=800',
     },
     {
       title: 'Saffron Seafood Stew',
@@ -2196,7 +2196,7 @@ async function main() {
         'Add seafood in stages: mussels, clams, fish fillets and prawns.',
         'Serve with rouille toasts and grated gruyère.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=800',
     },
     {
       title: 'Khachapuri',
@@ -2208,7 +2208,7 @@ async function main() {
         'Bake at 220°C for 15 minutes until golden.',
         'Crack a raw egg into the centre and return to oven 3-5 minutes. Add butter and eat immediately.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=800',
     },
     {
       title: 'Peach Cobbler',
@@ -2220,7 +2220,7 @@ async function main() {
         'Spoon topping over peaches in uneven dollops.',
         'Bake at 190°C for 30-35 minutes until golden. Serve with ice cream.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1621193793262-4127d9855c91?w=800',
     },
     {
       title: 'Sticky Toffee Pudding',
@@ -2232,7 +2232,7 @@ async function main() {
         'Make toffee sauce: cream, butter and brown sugar, simmer until thick.',
         'Turn out puddings and pour warm sauce over. Serve with vanilla ice cream.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1590080875852-4fa5c77253c4?w=800',
     },
     {
       title: 'Kouign Amann',
@@ -2244,7 +2244,7 @@ async function main() {
         'Press into a buttered tin and let rest 30 minutes.',
         'Bake at 200°C for 35-40 minutes until deeply caramelised.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800',
     },
     {
       title: 'Waffles with Berries',
@@ -2256,7 +2256,7 @@ async function main() {
         'Cook in a preheated waffle iron until golden and crispy.',
         'Serve with whipped cream, mixed berries and warm maple syrup.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=800',
     },
     {
       title: 'French Toast',
@@ -2268,7 +2268,7 @@ async function main() {
         'Flip carefully and cook the other side.',
         'Serve with powdered sugar, maple syrup and fresh berries.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1484723091739-30990106e26a?w=800',
     },
     {
       title: 'Chia Pudding',
@@ -2280,7 +2280,7 @@ async function main() {
         'Stir before serving, add more liquid if too thick.',
         'Top with sliced mango, kiwi and toasted coconut flakes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1546548970-71785318a17b?w=800',
     },
     {
       title: 'Overnight Oats',
@@ -2292,7 +2292,7 @@ async function main() {
         'In the morning, stir and add a splash more milk if needed.',
         'Top with sliced banana, granola and a drizzle of honey.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1526561601056-557c11b7f0d6?w=800',
     },
     {
       title: 'Stuffed Mushrooms',
@@ -2304,7 +2304,7 @@ async function main() {
         'Fill mushroom caps generously with spinach mixture.',
         'Top with breadcrumbs and parmesan, bake at 200°C for 20 minutes.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1518492104633-130d0cc84637?w=800',
     },
     {
       title: 'Beef Tataki',
@@ -2316,7 +2316,7 @@ async function main() {
         'Make ponzu: combine soy sauce, yuzu juice and mirin.',
         'Plate beef slices, add grated daikon and spring onion, drizzle with ponzu.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1542367592-8849eb950fd8?w=800',
     },
     {
       title: 'Pico de Gallo',
@@ -2328,7 +2328,7 @@ async function main() {
         'Mix everything with fresh lime juice and salt.',
         'Let sit 15 minutes before serving so flavours meld.',
       ],
-      imageUrl: 'https://images.unsplash.com/photo-1535400255456-984e3f6b4a82?w=800',
+      imageUrl: 'https://images.unsplash.com/photo-1605210055810-bdd1c4d1f343?w=800',
     },
   ];
 
