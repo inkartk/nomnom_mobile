@@ -6,7 +6,7 @@ import 'package:nomnom_mobile/features/ingredients/presentation/bloc/ingredient_
 import 'package:nomnom_mobile/features/ingredients/presentation/widgets/ingredient_card.dart';
 import 'package:nomnom_mobile/features/ingredients/presentation/widgets/ingredients_header.dart';
 import 'package:nomnom_mobile/features/ingredients/presentation/widgets/ingredients_shimmer.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/animated_list_item.dart';

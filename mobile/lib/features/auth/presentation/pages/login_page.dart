@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';

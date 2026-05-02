@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomnom_mobile/features/ingredients/domain/entities/ingredient.dart';
 import 'package:nomnom_mobile/features/ingredients/presentation/bloc/ingredient_bloc.dart';
-import 'package:nomnom_mobile/router/app_router.dart';
+import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/date_utils.dart';
