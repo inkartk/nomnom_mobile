@@ -34,13 +34,14 @@ export class IngredientsService {
 
   async findExpiringSoon(userId: string): Promise<IngredientResponseDto[]> {
     const now = new Date();
-    const inThreeDays = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const inThreeDays = new Date(startOfToday.getTime() + 3 * 24 * 60 * 60 * 1000);
 
     const items = await this.prisma.ingredient.findMany({
       where: {
         userId,
         expirationDate: {
-          gte: now,
+          gte: startOfToday,
           lte: inThreeDays,
         },
       },
