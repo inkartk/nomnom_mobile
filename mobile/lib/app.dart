@@ -9,8 +9,8 @@ import 'package:nomnom_mobile/features/ingredients/presentation/bloc/ingredient_
 import 'package:nomnom_mobile/features/recipes/presentation/bloc/recipe_bloc.dart';
 import 'package:nomnom_mobile/theme/router/app_router.dart';
 import 'package:nomnom_mobile/theme/app_theme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:talker_flutter/talker_flutter.dart';
+import 'package:nomnom_mobile/localization/app_localizations.dart';
+import 'package:talker_flutter/talker_flutter.dart' show TalkerRouteObserver;
 
 class NomNomApp extends StatelessWidget {
   NomNomApp({super.key});
@@ -26,10 +26,8 @@ class NomNomApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<RecipeBloc>()..add(const LoadRecipes())),
         BlocProvider(create: (_) => getIt<FavoritesBloc>()),
       ],
-      child: TalkerWrapper(
-        talker: appTalker,
-        child: MultiBlocListener(
-          listeners: [
+      child: MultiBlocListener(
+        listeners: [
             BlocListener<AuthBloc, AuthState>(
               listenWhen: (prev, curr) =>
                   prev.status != curr.status &&
@@ -63,8 +61,7 @@ class NomNomApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const [Locale('en'), Locale('ru')],
-        ),
+          supportedLocales: const [Locale('en')],
         ),
       ),
     );

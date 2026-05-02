@@ -7,7 +7,11 @@ class MockAuthRemoteDataSource {
 
   Future<UserDto> login({required String email, required String password}) async {
     await Future.delayed(const Duration(milliseconds: 600));
-    _cachedUser ??= UserDto(id: 'u1', name: 'Alex', email: email);
+    final localPart = email.split('@').first;
+    final displayName = localPart.isEmpty
+        ? 'User'
+        : localPart[0].toUpperCase() + localPart.substring(1);
+    _cachedUser ??= UserDto(id: 'u1', name: displayName, email: email);
     return _cachedUser!;
   }
 
@@ -19,7 +23,9 @@ class MockAuthRemoteDataSource {
 
   Future<UserDto> getMe() async {
     await Future.delayed(const Duration(milliseconds: 400));
-    _cachedUser ??= const UserDto(id: 'u1', name: 'Alex', email: 'alex@nomnom.app');
+    if (_cachedUser == null) {
+      throw StateError('Not authenticated');
+    }
     return _cachedUser!;
   }
 

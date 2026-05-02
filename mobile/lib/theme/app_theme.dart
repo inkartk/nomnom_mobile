@@ -34,7 +34,7 @@ class AppTheme {
         scrolledUnderElevation: 0,
         surfaceTintColor: Colors.transparent,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -118,7 +118,7 @@ class AppTheme {
         todayForegroundColor: WidgetStateProperty.all(AppColors.accent),
         todayBorder: const BorderSide(color: AppColors.accent),
       ),
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: AppColors.backgroundSecondary,
         shape: RoundedRectangleBorder(borderRadius: AppSpacing.radiusLg),
       ),

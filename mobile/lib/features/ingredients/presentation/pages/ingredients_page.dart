@@ -39,6 +39,7 @@ class _IngredientsPageState extends State<IngredientsPage> {
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(l10n.ingredients),
         actions: const [],
       ),
@@ -61,15 +62,14 @@ class _IngredientsPageState extends State<IngredientsPage> {
               ),
             );
           }
-          if (state.items.isEmpty) {
-            return AppGradientBackground(
-              child: StateMessage(
-                icon: Icons.kitchen_outlined,
-                title: l10n.noData,
-                subtitle: l10n.addIngredient,
-              ),
-            );
+          void onToggle() {
+            if (state.showExpiringSoon) {
+              context.read<IngredientBloc>().add(const LoadIngredients());
+            } else {
+              context.read<IngredientBloc>().add(const LoadExpiringSoon());
+            }
           }
+
           return AppGradientBackground(
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(),
@@ -78,30 +78,32 @@ class _IngredientsPageState extends State<IngredientsPage> {
                   child: IngredientsHeader(
                     title: l10n.ingredients,
                     filterActive: state.showExpiringSoon,
-                    onToggle: () {
-                      if (state.showExpiringSoon) {
-                        context
-                            .read<IngredientBloc>()
-                            .add(const LoadIngredients());
-                      } else {
-                        context
-                            .read<IngredientBloc>()
-                            .add(const LoadExpiringSoon());
-                      }
-                    },
+                    onToggle: onToggle,
                   ),
                 ),
-                SliverPadding(
-                  padding: AppSpacing.listPadding,
-                  sliver: SliverList.separated(
-                    itemBuilder: (context, index) => AnimatedListItem(
-                      index: index,
-                      child: IngredientCard(item: state.items[index]),
+                if (state.items.isEmpty)
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: StateMessage(
+                      icon: Icons.kitchen_outlined,
+                      title: l10n.noData,
+                      subtitle: state.showExpiringSoon
+                          ? l10n.expiringSoon
+                          : l10n.addIngredient,
                     ),
-                    separatorBuilder: (_, __) => AppSpacing.vMd,
-                    itemCount: state.items.length,
+                  )
+                else
+                  SliverPadding(
+                    padding: AppSpacing.listPadding,
+                    sliver: SliverList.separated(
+                      itemBuilder: (context, index) => AnimatedListItem(
+                        index: index,
+                        child: IngredientCard(item: state.items[index]),
+                      ),
+                      separatorBuilder: (_, __) => AppSpacing.vMd,
+                      itemCount: state.items.length,
+                    ),
                   ),
-                ),
               ],
             ),
           );

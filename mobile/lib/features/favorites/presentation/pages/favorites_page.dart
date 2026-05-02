@@ -19,7 +19,10 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.favorites)),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(l10n.favorites),
+      ),
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           if (state.status == FavoritesStatus.loading) {

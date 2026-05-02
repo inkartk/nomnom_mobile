@@ -1,14 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nomnom_mobile/core/logging/app_talker.dart';
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
 import 'package:nomnom_mobile/widgets/glass_card.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 @RoutePage()
 class ProfilePage extends StatelessWidget {
@@ -20,19 +18,8 @@ class ProfilePage extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(l10n.profile),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.bug_report_outlined),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => TalkerScreen(talker: appTalker),
-                ),
-              );
-            },
-          ),
-        ],
       ),
       body: AppGradientBackground(
         child: Padding(
@@ -40,9 +27,10 @@ class ProfilePage extends StatelessWidget {
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               final user = state.user;
-              final initials = (user?.name ?? 'A').trim().isEmpty
-                  ? 'A'
-                  : (user?.name ?? 'A').trim().characters.first.toUpperCase();
+              final name = (user?.name ?? '').trim();
+              final initials = name.isEmpty
+                  ? '?'
+                  : name.characters.first.toUpperCase();
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -77,12 +65,12 @@ class ProfilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                user?.name ?? 'Alex',
+                                name.isEmpty ? '—' : name,
                                 style: theme.textTheme.titleLarge,
                               ),
                               AppSpacing.vXs,
                               Text(
-                                user?.email ?? 'alex@nomnom.app',
+                                user?.email ?? '—',
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: AppColors.textSecondary,
                                 ),

@@ -7,6 +7,7 @@ import 'package:nomnom_mobile/theme/app_colors.dart';
 import 'package:nomnom_mobile/theme/app_spacing.dart';
 import 'package:nomnom_mobile/utils/date_utils.dart';
 import 'package:nomnom_mobile/utils/l10n.dart';
+import 'package:nomnom_mobile/utils/validators.dart';
 import 'package:nomnom_mobile/widgets/app_background.dart';
 import 'package:nomnom_mobile/widgets/glass_card.dart';
 import 'package:nomnom_mobile/widgets/gradient_button.dart';
@@ -21,10 +22,12 @@ class IngredientFormPage extends StatefulWidget {
 }
 
 class _IngredientFormPageState extends State<IngredientFormPage> {
+  final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _quantityController = TextEditingController();
   final _unitController = TextEditingController();
   DateTime? _expiration;
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
 
   @override
   void initState() {
@@ -59,12 +62,18 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
   }
 
   void _save() {
+    if (_autovalidateMode != AutovalidateMode.onUserInteraction) {
+      setState(() => _autovalidateMode = AutovalidateMode.onUserInteraction);
+    }
+    if (!(_formKey.currentState?.validate() ?? false)) return;
     final bloc = context.read<IngredientBloc>();
     final ingredient = Ingredient(
       id: widget.ingredientId ??
           DateTime.now().millisecondsSinceEpoch.toString(),
       name: _nameController.text.trim(),
-      quantity: double.tryParse(_quantityController.text.trim()) ?? 0,
+      quantity: double.tryParse(
+              _quantityController.text.trim().replaceAll(',', '.')) ??
+          0,
       unit: _unitController.text.trim(),
       expirationDate: _expiration ?? DateTime.now(),
     );
@@ -107,24 +116,32 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
             padding: AppSpacing.pagePadding,
             child: Column(
               children: [
-                GlassCard(
+                Form(
+                  key: _formKey,
+                  autovalidateMode: _autovalidateMode,
+                  child: GlassCard(
                   padding: AppSpacing.cardPaddingLarge,
                   child: Column(
                     children: [
-                      TextField(
+                      TextFormField(
                         controller: _nameController,
                         decoration: InputDecoration(labelText: l10n.name),
+                        validator: (v) => Validators.required(v, l10n),
                       ),
                       AppSpacing.vMd,
-                      TextField(
+                      TextFormField(
                         controller: _quantityController,
                         decoration: InputDecoration(labelText: l10n.quantity),
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
+                        validator: (v) => Validators.quantity(v, l10n),
                       ),
                       AppSpacing.vMd,
-                      TextField(
+                      TextFormField(
                         controller: _unitController,
                         decoration: InputDecoration(labelText: l10n.unit),
+                        validator: (v) => Validators.unit(v, l10n),
                       ),
                       AppSpacing.vMd,
                       GlassCard(
@@ -168,6 +185,7 @@ class _IngredientFormPageState extends State<IngredientFormPage> {
                         ),
                       ),
                     ],
+                  ),
                   ),
                 ),
                 AppSpacing.vLg,

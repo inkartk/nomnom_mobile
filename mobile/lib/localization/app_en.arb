@@ -27,5 +27,16 @@
   "edit": "Edit",
   "delete": "Delete",
   "steps": "Steps",
-  "expiresInDays": "Expires in {days} days"
+  "expiresInDays": "Expires in {days} days",
+  "signInToContinue": "Sign in to continue",
+  "createYourAccount": "Create your account",
+  "haveAccountLogin": "Already have an account? Login",
+  "validationRequired": "Required field",
+  "validationEmailInvalid": "Enter a valid email",
+  "validationPasswordTooShort": "Password must be at least 6 characters",
+  "validationNameTooShort": "Name must be at least 2 characters",
+  "validationQuantityInvalid": "Enter a valid number",
+  "validationUnitInvalid": "Letters only (e.g. kg, g, ml)",
+  "emailNotVerified": "Email is not verified. Please check your inbox.",
+  "resend": "Resend"
 }

@@ -37,7 +37,10 @@ class _RecipesPageState extends State<RecipesPage> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.recipes)),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(l10n.recipes),
+      ),
       body: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
           if (state.status == RecipeStatus.loading) {
