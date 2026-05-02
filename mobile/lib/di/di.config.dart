@@ -30,6 +30,10 @@ import 'package:nomnom_mobile/features/auth/domain/usecases/logout_usecase.dart'
     as _i217;
 import 'package:nomnom_mobile/features/auth/domain/usecases/register_usecase.dart'
     as _i42;
+import 'package:nomnom_mobile/features/auth/domain/usecases/resend_verification_usecase.dart'
+    as _i267;
+import 'package:nomnom_mobile/features/auth/domain/usecases/verify_email_usecase.dart'
+    as _i156;
 import 'package:nomnom_mobile/features/auth/presentation/bloc/auth_bloc.dart'
     as _i1005;
 import 'package:nomnom_mobile/features/favorites/data/datasources/favorites_api.dart'
@@ -133,6 +137,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i217.LogoutUseCase(gh<_i662.AuthRepository>()));
     gh.factory<_i54.GetMeUseCase>(
         () => _i54.GetMeUseCase(gh<_i662.AuthRepository>()));
+    gh.factory<_i267.ResendVerificationUseCase>(
+        () => _i267.ResendVerificationUseCase(gh<_i662.AuthRepository>()));
+    gh.factory<_i156.VerifyEmailUseCase>(
+        () => _i156.VerifyEmailUseCase(gh<_i662.AuthRepository>()));
     gh.lazySingleton<_i487.FavoritesRepository>(
         () => _i1039.FavoritesRepositoryImpl(gh<_i1038.FavoritesApi>()));
     gh.factory<_i285.IngredientBloc>(() => _i285.IngredientBloc(
@@ -149,6 +157,8 @@ extension GetItInjectableX on _i174.GetIt {
           registerUseCase: gh<_i42.RegisterUseCase>(),
           getMeUseCase: gh<_i54.GetMeUseCase>(),
           logoutUseCase: gh<_i217.LogoutUseCase>(),
+          resendVerificationUseCase: gh<_i267.ResendVerificationUseCase>(),
+          verifyEmailUseCase: gh<_i156.VerifyEmailUseCase>(),
         ));
     gh.factory<_i134.GetFavorites>(
         () => _i134.GetFavorites(gh<_i487.FavoritesRepository>()));

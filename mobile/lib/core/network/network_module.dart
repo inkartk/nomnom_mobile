@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomnom_mobile/core/logging/app_talker.dart';
@@ -15,12 +13,8 @@ import 'package:nomnom_mobile/features/recipes/data/datasources/recipes_api.dart
 abstract class NetworkModule {
   @lazySingleton
   Dio dio(AuthInterceptor authInterceptor) {
-    final baseUrl = Platform.isAndroid
-        ? 'http://10.0.2.2:3000'
-        : 'http://localhost:3000';
-
     final dio = Dio(BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: 'https://nomnom-mobile.onrender.com',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     ));

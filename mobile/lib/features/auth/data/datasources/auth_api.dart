@@ -16,4 +16,10 @@ abstract class AuthApi {
 
   @POST('/api/auth/logout')
   Future<void> logout();
+
+  @GET('/api/auth/verify-email')
+  Future<void> verifyEmail(@Query('token') String token);
+
+  @POST('/api/auth/resend-verification')
+  Future<void> resendVerification(@Body() Map<String, dynamic> body);
 }

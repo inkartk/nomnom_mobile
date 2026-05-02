@@ -23,6 +23,7 @@ mixin _$UserDto {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  bool get emailVerified => throw _privateConstructorUsedError;
 
   /// Serializes this UserDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,7 @@ abstract class $UserDtoCopyWith<$Res> {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
-  $Res call({String id, String name, String email});
+  $Res call({String id, String name, String email, bool emailVerified});
 }
 
 /// @nodoc
@@ -59,6 +60,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? id = null,
     Object? name = null,
     Object? email = null,
+    Object? emailVerified = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,6 +75,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      emailVerified: null == emailVerified
+          ? _value.emailVerified
+          : emailVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -84,7 +90,7 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       __$$UserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String email});
+  $Res call({String id, String name, String email, bool emailVerified});
 }
 
 /// @nodoc
@@ -103,6 +109,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? email = null,
+    Object? emailVerified = null,
   }) {
     return _then(_$UserDtoImpl(
       id: null == id
@@ -117,6 +124,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      emailVerified: null == emailVerified
+          ? _value.emailVerified
+          : emailVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -125,7 +136,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserDtoImpl implements _UserDto {
   const _$UserDtoImpl(
-      {required this.id, required this.name, required this.email});
+      {required this.id,
+      required this.name,
+      required this.email,
+      this.emailVerified = false});
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDtoImplFromJson(json);
@@ -136,10 +150,13 @@ class _$UserDtoImpl implements _UserDto {
   final String name;
   @override
   final String email;
+  @override
+  @JsonKey()
+  final bool emailVerified;
 
   @override
   String toString() {
-    return 'UserDto(id: $id, name: $name, email: $email)';
+    return 'UserDto(id: $id, name: $name, email: $email, emailVerified: $emailVerified)';
   }
 
   @override
@@ -149,12 +166,14 @@ class _$UserDtoImpl implements _UserDto {
             other is _$UserDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.emailVerified, emailVerified) ||
+                other.emailVerified == emailVerified));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email);
+  int get hashCode => Object.hash(runtimeType, id, name, email, emailVerified);
 
   /// Create a copy of UserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +195,8 @@ abstract class _UserDto implements UserDto {
   const factory _UserDto(
       {required final String id,
       required final String name,
-      required final String email}) = _$UserDtoImpl;
+      required final String email,
+      final bool emailVerified}) = _$UserDtoImpl;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
@@ -186,6 +206,8 @@ abstract class _UserDto implements UserDto {
   String get name;
   @override
   String get email;
+  @override
+  bool get emailVerified;
 
   /// Create a copy of UserDto
   /// with the given fields replaced by the non-null parameter values.

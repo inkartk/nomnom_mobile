@@ -46,9 +46,21 @@ class _RegisterPageState extends State<RegisterPage> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return BlocListener<AuthBloc, AuthState>(
+      listenWhen: (prev, curr) =>
+          prev.status != curr.status || prev.formStatus != curr.formStatus,
       listener: (context, state) {
         if (state.status == AuthStatus.authenticated) {
           context.router.replace(const HomeRoute());
+        } else if (state.formStatus == FormStatus.emailVerificationPending &&
+            state.pendingEmail != null) {
+          context.router.replace(
+            VerifyEmailPendingRoute(email: state.pendingEmail!),
+          );
+        } else if (state.formStatus == FormStatus.failure &&
+            state.errorMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.errorMessage!)),
+          );
         }
       },
       child: Scaffold(

@@ -10,11 +10,17 @@ class UserDto with _$UserDto {
     required String id,
     required String name,
     required String email,
+    @Default(false) bool emailVerified,
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
 }
 
 extension UserDtoX on UserDto {
-  User toDomain() => User(id: id, name: name, email: email);
+  User toDomain() => User(
+        id: id,
+        name: name,
+        email: email,
+        emailVerified: emailVerified,
+      );
 }
