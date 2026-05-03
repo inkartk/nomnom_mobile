@@ -1,61 +1,79 @@
-# NomNom App
+# NomNom
 
-NomNom helps users manage ingredients, browse recipes, and save favorite dishes in one place.
+> A mobile app that helps you track ingredients, discover recipes, and save your favorites — all in one place.
 
 ## Problem Statement
 
-Many users struggle to find personalized food options and track their preferences efficiently. They often forgot about ingredients in their fridge and expiracy dates of some products.
+People often forget what ingredients they have at home, miss expiry dates, and struggle to decide what to cook. NomNom solves this by combining ingredient tracking with recipe discovery in a single app.
 
 ## Features
 
-* User registration and login
-* Authenticated user profile access
-* Ingredient create, read, update, and delete operations
-* Expiring-soon ingredient filtering
-* Recipe listing, search, details, and creation
-* Favorite recipe management
+- User registration and login with email verification
+- Authenticated user profile access
+- Ingredient create, read, update, and delete operations
+- Expiring-soon ingredient alerts
+- Recipe listing, search, and details
+- Favorite recipe management
 
-## Getting Started
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Mobile | Flutter |
+| Backend | NestJS, TypeScript |
+| ORM | Prisma |
+| Database | PostgreSQL |
+| Auth | JWT + HTTP cookies |
+| Email | MailerSend API |
+| Deployment | Railway |
+
+## Installation
 
 ### Prerequisites
 
 - [Docker](https://www.docker.com/) and Docker Compose
 - [Flutter SDK](https://flutter.dev/)
 
-### Run the Backend
-
-1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/gullyfest/nomnom_mobile
 cd nomnom_mobile
 ```
 
-2. Create `backend/.env` with the required variables (see `backend/README.md` for the full list).
+### 2. Configure the backend
 
-3. Start the backend and database:
+Create `backend/.env` (see `backend/README.md` for all variables):
+
+```env
+PORT=3000
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/nomnom?schema=public
+JWT_SECRET=your-secret
+JWT_EXPIRES_IN=7d
+COOKIE_NAME=nomnom_session
+APP_BASE_URL=http://localhost:3000
+MAILERSEND_API_KEY=your-mailersend-key
+MAILERSEND_FROM_EMAIL=noreply@your-domain.mlsender.net
+MAILERSEND_FROM_NAME=NomNom
+```
+
+### 3. Start the backend
 
 ```bash
 cd backend
 docker compose up --build
 ```
 
-This starts:
-- PostgreSQL on `localhost:5432`
-- Backend API on `http://localhost:3000`
+Backend runs at `http://localhost:3000`.
 
-Prisma migrations are applied automatically on startup.
-
-### Seed the Database (optional)
-
-To populate the database with sample recipes and ingredients:
+### 4. Seed the database (optional)
 
 ```bash
 docker cp prisma/seed.ts nomnom-backend:/app/prisma/seed.ts
 docker exec nomnom-backend sh -c "cd /app && npx prisma db seed"
 ```
 
-### Run the Flutter App
+### 5. Run the mobile app
 
 ```bash
 cd mobile
@@ -63,18 +81,31 @@ flutter pub get
 flutter run
 ```
 
-Make sure the backend is running before launching the app.
-
 ## Usage
 
-- Sign up or log in (email verification required)
-- Browse and search recipes
-- Manage your ingredients and track expiry dates
-- Save favorite recipes
+1. Open the app and **sign up** with your email
+2. Check your inbox and **verify your email** via the link
+3. **Log in** and start adding ingredients to your pantry
+4. Browse and **search recipes** based on what you have
+5. **Save favorites** for quick access later
+6. Get notified about **expiring ingredients**
 
+## Screenshots
 
-## Tech Stack
+_Coming soon_
 
-* Frontend: Flutter
-* Backend: NestJS, TypeScript, Prisma
-* Database: PostgreSQL
+## API
+
+Production API base URL:
+```
+https://nomnommobile-production.up.railway.app/api
+```
+
+Full API documentation is available in [backend/README.md](backend/README.md).
+
+## Student IDs
+
+Yerniyazova Aruzhan - 230103049 
+Tolegen Ingkar - 230103157
+Zhanali Biyekeyev - 230103327
+Nurtileu Abdilda - 230103017

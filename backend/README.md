@@ -1,64 +1,44 @@
 # NomNom Backend
 
-NomNom Backend is the server-side part of the NomNom application, built to support a Flutter mobile client for recipe discovery, ingredient tracking, and favorites management.
+NomNom Backend is the server-side API for the NomNom mobile application.
 
-This version is an alpha release focused on validating the core app flow and the API contract.
+It handles authentication, user profile access, ingredient management, recipe operations, and favorites.
 
-## Overview
+## Current Production
 
-NomNom helps users manage ingredients, browse recipes, and save favorite dishes in one place.
-
-The backend provides a REST API for authentication, user access, ingredient management, recipe operations, and favorites handling.
-
-## Purpose
-
-- Provide a stable API for the Flutter client
-- Centralize business logic and database access
-- Support user-based ingredient and favorites workflows
-- Serve as the base for further integration and deployment
+- Platform: Railway
+- Base URL: https://nomnommobile-production.up.railway.app
+- API prefix: /api
+- Email provider: MailerSend API
 
 ## Main Features
 
 - User registration and login
-- Authenticated user profile access
-- Ingredient create, read, update, and delete operations
-- Expiring-soon ingredient filtering
+- Email verification workflow
+- Authenticated profile endpoint
+- Ingredient CRUD and expiring-soon filter
 - Recipe listing, search, details, and creation
-- Favorite recipe management
+- Favorite recipes management
 
 ## Tech Stack
 
-- Frontend: Flutter
-- Backend: NestJS, TypeScript, Prisma
-- Database: PostgreSQL
+- NestJS + TypeScript
+- Prisma ORM
+- PostgreSQL
 
-## Run With Docker
-
-### Prerequisites
-
-- [Docker](https://www.docker.com/) and Docker Compose installed
-- A `.env` file in the `backend/` folder (see [Environment Variables](#environment-variables) below)
+## Local Development With Docker
 
 ### Start
 
-From the `backend/` folder:
+From backend folder:
 
 ```bash
 docker compose up --build
 ```
 
 This starts:
-
-- PostgreSQL on `localhost:5432`
-- Backend API on `http://localhost:3000`
-
-Prisma migrations are applied automatically when the backend container starts.
-
-### Subsequent Runs (no rebuild needed)
-
-```bash
-docker compose up
-```
+- PostgreSQL on localhost:5432
+- Backend API on http://localhost:3000
 
 ### Stop
 
@@ -66,104 +46,79 @@ docker compose up
 docker compose down
 ```
 
-To also remove the database volume:
+Remove database volume too:
 
 ```bash
 docker compose down -v
 ```
 
-### Seed the Database
-
-To populate the database with sample recipes, ingredients, and a test user:
+### Seed local DB
 
 ```bash
 docker cp prisma/seed.ts nomnom-backend:/app/prisma/seed.ts
 docker exec nomnom-backend sh -c "cd /app && npx prisma db seed"
 ```
 
-### Browse the Database (Prisma Studio)
+## Railway Deployment
 
-To inspect data via a visual UI at `http://localhost:5556`:
+### Required variables
 
-```bash
-docker run --rm --name nomnom-studio \
-  --network backend_default \
-  -p 5556:5555 \
-  -e DATABASE_URL="postgresql://postgres:postgres@postgres:5432/nomnom?schema=public" \
-  backend-backend \
-  sh -c "cd /app && npx prisma studio --hostname 0.0.0.0 --port 5555"
-```
-
-## Environment Variables
-
-Create `backend/.env` with the following variables:
+Set these in Railway service variables:
 
 ```env
 PORT=3000
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/nomnom?schema=public
-JWT_SECRET=your-secret-here
+DATABASE_URL=<railway-postgres-url>
+JWT_SECRET=<strong-random-secret>
 JWT_EXPIRES_IN=7d
-CLIENT_ORIGIN=http://localhost:3001
+CLIENT_ORIGIN=*
 COOKIE_NAME=nomnom_session
-APP_BASE_URL=http://localhost:3000
-
-# Optional — SMTP for email verification
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your@gmail.com
-SMTP_PASS=your-app-password
-SMTP_FROM=your@gmail.com
+APP_BASE_URL=https://nomnommobile-production.up.railway.app
+MAILERSEND_API_KEY=<mailersend-api-key>
+MAILERSEND_FROM_EMAIL=noreply@test-nrw7gym8d1og2k8e.mlsender.net
+MAILERSEND_FROM_NAME=NomNom
 ```
 
-> If SMTP variables are not set, the verification link is printed to the backend logs instead of being sent by email.
+Notes:
+- Do not use localhost in Railway DATABASE_URL.
+- Use Railway service domain in APP_BASE_URL.
+- If MAILERSEND_API_KEY is missing, verification link is printed to logs as fallback.
+
+### Seed Railway DB
+
+If running seed from your local machine, use the public DB URL:
+
+```bash
+set DATABASE_URL=<railway-public-db-url>
+npm run prisma:seed
+```
+
+## Main Endpoints
+
+- POST /api/auth/register
+- POST /api/auth/login
+- POST /api/auth/logout
+- POST /api/auth/resend-verification
+- GET /api/auth/verify-email?token=...
+- GET /api/users/me
+- GET/POST /api/ingredients
+- GET /api/ingredients/expiring-soon
+- GET/POST /api/recipes
+- GET /api/recipes/search
+- GET/POST/DELETE /api/favorites
+
+## Auth Behavior
+
+- Login requires verified email.
+- Unverified user gets 401 with message: Please verify your email before logging in.
+- Verification endpoint returns {"success": true} on success.
 
 ## Project Structure
 
-- `src/auth` - authentication logic, guards, and strategies
-- `src/users` - user profile endpoints
-- `src/ingredients` - ingredient domain and API
-- `src/recipes` - recipe domain and API
-- `src/favorites` - favorites domain and API
-- `src/prisma` - Prisma service integration
-- `prisma/schema.prisma` - database schema
-- `prisma/migrations` - migration history
-
-## Current Status
-
-This project is currently in alpha.
-
-- Core backend modules are implemented
-- Main API routes are available and working
-- Database schema and relations are defined
-- The project is ready for frontend integration and API-level testing
-- Some Flutter-side wiring is still needed to replace mocks with real requests
-
-## Frontend Integration Notes
-
-Base API URL example:
-
-- `http://localhost:3000/api`
-
-Notes for Flutter integration:
-
-- Replace mock data with real API calls
-- Make sure the backend is running locally during development
-- Authentication uses JWT or cookies, depending on the client implementation
-- The Flutter app should align with the current request and response contract
-
-Main endpoints:
-
-- `/api/auth/register`
-- `/api/auth/login`
-- `/api/auth/verify-email?token=...`
-- `/api/auth/resend-verification`
-- `/api/users/me`
-- `/api/ingredients`
-- `/api/recipes`
-- `/api/favorites`
-
-Email verification notes:
-
-- New users receive a verification link during registration.
-- Login is blocked until `emailVerified` is true.
-- If SMTP variables are not configured, the verification URL is printed to the backend logs so you can verify manually during development.
+- src/auth: auth logic, JWT, verification flow
+- src/users: profile endpoints
+- src/ingredients: ingredient module
+- src/recipes: recipe module
+- src/favorites: favorites module
+- src/prisma: prisma service module
+- prisma/schema.prisma: database schema
+- prisma/migrations: migration history
