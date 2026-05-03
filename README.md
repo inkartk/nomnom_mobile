@@ -92,9 +92,23 @@ flutter run
 
 ## Screenshots
 
-| Recipes | Ingredients | Add Ingredient |
+### Auth
+
+| Register | Verify Email | Login |
 |---|---|---|
-| <img src="screenshots/recipes_page.jpg" width="240" /> | <img src="screenshots/ingredient_page.jpg" width="240" /> | <img src="screenshots/add_ingredient_page.jpg" width="240" /> |
+| <img src="screenshots/register_page.jpg" width="240" /> | <img src="screenshots/verify_email_page.jpg" width="240" /> | <img src="screenshots/login_page.jpg" width="240" /> |
+
+### Ingredients & Recipes
+
+| Ingredients | Add Ingredient | Recipes |
+|---|---|---|
+| <img src="screenshots/ingredient_page.jpg" width="240" /> | <img src="screenshots/add_ingredient_page.jpg" width="240" /> | <img src="screenshots/recipes_page.jpg" width="240" /> |
+
+### Recipe Details, Favorites & Profile
+
+| Recipe Details | Favorites | Profile |
+|---|---|---|
+| <img src="screenshots/details_page.jpg" width="240" /> | <img src="screenshots/favorites_page.jpg" width="240" /> | <img src="screenshots/profile_page.jpg" width="240" /> |
 
 ## API
 
