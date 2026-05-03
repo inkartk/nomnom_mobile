@@ -92,7 +92,9 @@ flutter run
 
 ## Screenshots
 
-_Coming soon_
+| Recipes | Ingredients | Add Ingredient |
+|---|---|---|
+| <img src="screenshots/recipes_page.jpg" width="240" /> | <img src="screenshots/ingredient_page.jpg" width="240" /> | <img src="screenshots/add_ingredient_page.jpg" width="240" /> |
 
 ## API
 
