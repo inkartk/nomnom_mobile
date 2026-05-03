@@ -69,7 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           formStatus: FormStatus.failure,
           pendingEmail: event.email,
           errorMessage:
-              'Email не подтверждён. Проверьте почту или запросите новое письмо.',
+              'Email is not verified. Check your inbox or request a new email.',
         ));
       } else {
         emit(state.copyWith(

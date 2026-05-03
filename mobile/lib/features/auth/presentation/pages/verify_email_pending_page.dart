@@ -24,7 +24,7 @@ class VerifyEmailPendingPage extends StatelessWidget {
         if (state.formStatus == FormStatus.resendSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Письмо отправлено повторно. Проверьте почту.'),
+              content: Text('Email resent. Please check your inbox.'),
             ),
           );
         } else if (state.formStatus == FormStatus.failure &&
@@ -45,7 +45,7 @@ class VerifyEmailPendingPage extends StatelessWidget {
                 context.router.replace(const LoginRoute());
               },
             ),
-            title: const Text('Подтвердите email'),
+            title: const Text('Verify your email'),
           ),
           body: AppGradientBackground(
             child: SafeArea(
@@ -62,13 +62,13 @@ class VerifyEmailPendingPage extends StatelessWidget {
                     ),
                     AppSpacing.vLg,
                     Text(
-                      'Проверьте почту',
+                      'Check your email',
                       textAlign: TextAlign.center,
                       style: theme.textTheme.headlineMedium,
                     ),
                     AppSpacing.vSm,
                     Text(
-                      'Мы отправили ссылку для подтверждения на:',
+                      'We sent a confirmation link to:',
                       textAlign: TextAlign.center,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: AppColors.textSecondary,
@@ -86,7 +86,7 @@ class VerifyEmailPendingPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Перейдите по ссылке из письма, чтобы активировать аккаунт. Не получили письмо?',
+                            'Open the link in the email to activate your account. Didn\'t get the email?',
                             textAlign: TextAlign.center,
                             style: theme.textTheme.bodyMedium,
                           ),
@@ -101,7 +101,7 @@ class VerifyEmailPendingPage extends StatelessWidget {
                                             email: email),
                                       ),
                               child: Text(
-                                loading ? 'Отправка...' : 'Отправить повторно',
+                                loading ? 'Sending...' : 'Resend email',
                               ),
                             ),
                           ),
@@ -113,7 +113,7 @@ class VerifyEmailPendingPage extends StatelessWidget {
                                   .add(const AuthFormReset());
                               context.router.replace(const LoginRoute());
                             },
-                            child: const Text('Вернуться ко входу'),
+                            child: const Text('Back to sign in'),
                           ),
                         ],
                       ),
