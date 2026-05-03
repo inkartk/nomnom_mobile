@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import Mailjet from 'node-mailjet';
+import * as Mailjet from 'node-mailjet';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { UserResponseDto } from '../users/dto/user-response.dto';
@@ -179,7 +179,7 @@ export class AuthService {
       return;
     }
 
-    const mailjet = new Mailjet({ apiKey, apiSecret: secretKey });
+    const mailjet = new (Mailjet as any).Client({ apiKey, apiSecret: secretKey });
 
     try {
       await mailjet.post('send', { version: 'v3.1' }).request({
