@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
+import Mailjet from 'node-mailjet';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { UserResponseDto } from '../users/dto/user-response.dto';
@@ -169,28 +169,30 @@ export class AuthService {
     const baseUrl = this.configService.get<string>('APP_BASE_URL') ?? 'http://localhost:3000';
     const verifyUrl = `${baseUrl}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
 
-    const apiKey = this.configService.get<string>('MAILERSEND_API_KEY');
-    const fromEmail = this.configService.get<string>('MAILERSEND_FROM_EMAIL') ?? 'noreply@trial-XXXXXX.mlsender.net';
-    const fromName = this.configService.get<string>('MAILERSEND_FROM_NAME') ?? 'NomNom';
+    const apiKey = this.configService.get<string>('MAILJET_API_KEY');
+    const secretKey = this.configService.get<string>('MAILJET_SECRET_KEY');
+    const fromEmail = this.configService.get<string>('MAILJET_FROM_EMAIL') ?? 'noreply@example.com';
+    const fromName = this.configService.get<string>('MAILJET_FROM_NAME') ?? 'NomNom';
 
-    if (!apiKey) {
+    if (!apiKey || !secretKey) {
       console.log(`Email verification URL for ${email}: ${verifyUrl}`);
       return;
     }
 
-    const mailerSend = new MailerSend({ apiKey });
-    const sentFrom = new Sender(fromEmail, fromName);
-    const recipients = [new Recipient(email)];
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setSubject('Verify your NomNom account')
-      .setText(`Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`)
-      .setHtml(`<p>Welcome to NomNom!</p><p>Verify your email by clicking <a href="${verifyUrl}">this link</a>.</p>`);
+    const mailjet = new Mailjet({ apiKey, apiSecret: secretKey });
 
     try {
-      await mailerSend.email.send(emailParams);
+      await mailjet.post('send', { version: 'v3.1' }).request({
+        Messages: [
+          {
+            From: { Email: fromEmail, Name: fromName },
+            To: [{ Email: email }],
+            Subject: 'Verify your NomNom account',
+            TextPart: `Welcome to NomNom! Verify your email by opening this link: ${verifyUrl}`,
+            HTMLPart: `<p>Welcome to NomNom!</p><p>Verify your email by clicking <a href="${verifyUrl}">this link</a>.</p>`,
+          },
+        ],
+      });
       console.log(`Verification email sent to ${email}`);
     } catch (err) {
       console.error(`Failed to send verification email to ${email}:`, err);
