@@ -14,7 +14,7 @@ abstract class NetworkModule {
   @lazySingleton
   Dio dio(AuthInterceptor authInterceptor) {
     final dio = Dio(BaseOptions(
-      baseUrl: 'https://nomnom-mobile.onrender.com',
+      baseUrl: 'https://nomnommobile-production.up.railway.app',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     ));
